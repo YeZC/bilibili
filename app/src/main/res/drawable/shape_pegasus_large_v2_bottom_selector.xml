@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true" android:drawable="@drawable/shape_rect_grad_black_alpha_0_to_40"/>
+    <item android:state_selected="false">
+        <shape android:shape="rectangle">
+            <corners android:bottomLeftRadius="@dimen/corner_radius_medium" android:bottomRightRadius="@dimen/corner_radius_medium"/>
+            <gradient android:startColor="@color/black_alpha40" android:endColor="@android:color/transparent" android:angle="90"/>
+        </shape>
+    </item>
+</selector>

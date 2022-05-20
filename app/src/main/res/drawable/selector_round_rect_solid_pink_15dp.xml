@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:drawable="@drawable/shape_rect_solid_pink_dark_60_15dp"/>
+    <item android:state_pressed="true" android:drawable="@drawable/shape_rect_solid_pink_50_15dp"/>
+    <item android:drawable="@drawable/shape_rect_solid_pink_15dp"/>
+</selector>

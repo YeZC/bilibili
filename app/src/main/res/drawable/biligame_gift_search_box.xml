@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/Wh0"/>
+    <item android:left="@dimen/biligame_dip_20" android:right="@dimen/biligame_dip_20">
+        <shape android:shape="rectangle">
+            <corners android:radius="20dp"/>
+            <solid android:color="@color/biligame_gift_search_box"/>
+        </shape>
+    </item>
+</layer-list>

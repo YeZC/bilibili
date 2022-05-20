@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="40dp" android:width="40dp" android:viewportWidth="1024" android:viewportHeight="1024">
+    <path android:fillColor="#000000" android:pathData="M800 128C889.6 128 960 198.4 960 288v448c0 89.6-70.4 160-160 160h-576C134.4 896 64 825.6 64 736v-448C64 198.4 134.4 128 224 128h576z m96 608v-448c0-54.4-41.6-96-96-96h-576C169.6 192 128 233.6 128 288v448c0 54.4 41.6 96 96 96h576c54.4 0 96-41.6 96-96zM240 448V384h64v64h-64z m64 192V576h64v64h-64z m128 0V576h352v64h-352z m-64-192V384h384v64h-384z"/>
+</vector>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/identify_dialog_corner"/>
+    <stroke android:width="0.5dp" android:color="@color/theme_color_live_bg_gray_4"/>
+    <solid android:color="@android:color/transparent"/>
+    <padding android:left="6dp" android:top="2dp" android:right="6dp" android:bottom="2dp"/>
+</shape>

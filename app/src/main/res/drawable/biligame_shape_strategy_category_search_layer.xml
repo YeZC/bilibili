@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/Wh0"/>
+    <item android:drawable="@drawable/biligame_shape_strategy_category_search_box" android:left="@dimen/biligame_dip_12" android:top="7dp" android:right="@dimen/biligame_dip_12" android:bottom="7dp"/>
+</layer-list>

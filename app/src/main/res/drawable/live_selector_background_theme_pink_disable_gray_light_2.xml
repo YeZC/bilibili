@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:state_selected="false" android:drawable="@drawable/live_shape_roundrect_theme_pink_corner_4"/>
+    <item android:state_enabled="false" android:state_selected="true" android:drawable="@drawable/live_shape_roundrect_theme_vertical_full_pink_corner_4"/>
+    <item android:state_enabled="true" android:state_selected="true" android:drawable="@drawable/live_shape_roundrect_vertical_full_wear_corner_4"/>
+    <item android:drawable="@drawable/live_shape_roundrect_daynight_gray_light_2_corner_4"/>
+</selector>

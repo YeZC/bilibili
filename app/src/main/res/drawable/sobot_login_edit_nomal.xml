@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient android:startColor="@color/sobot_color_evaluate_bg_normal" android:endColor="@color/sobot_color_evaluate_bg_normal" android:angle="90"/>
+    <stroke android:width="0.5dp" android:color="#b5b5b5"/>
+    <corners android:radius="30dp"/>
+</shape>

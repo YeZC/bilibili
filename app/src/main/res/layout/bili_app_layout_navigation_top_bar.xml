@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.yzc.bilibili.view.TintToolBar
+        android:id="@+id/nav_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/navigationTopBarSize"
+        android:background="@color/theme_color_primary_tr_background"
+        app:iconTintColor="@color/theme_color_primary_tr_icon"
+        app:titleTintColor="@color/theme_color_primary_tr_title"
+        style="?attr/toolbarStyle"
+        />
+</merge>

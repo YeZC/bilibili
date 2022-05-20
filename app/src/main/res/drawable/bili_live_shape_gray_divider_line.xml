@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient android:startColor="@color/live_room_rank_divider_line_start_color" android:endColor="@color/live_room_rank_divider_line_end_color" android:angle="270" android:centerColor="@color/live_room_rank_divider_line_center_color"/>
+</shape>

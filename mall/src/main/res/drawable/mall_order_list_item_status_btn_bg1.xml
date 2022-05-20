@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="30dp"/>
+    <solid android:color="@color/Pi5"/>
+    <size android:height="@dimen/order_status_btn_height" android:width="@dimen/order_status_btn_width"/>
+</shape>

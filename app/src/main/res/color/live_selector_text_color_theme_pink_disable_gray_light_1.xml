@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:state_selected="false" android:color="@color/daynight_medal_select"/>
+    <item android:state_enabled="false" android:state_selected="true" android:color="@color/live_medal_select_text_color"/>
+    <item android:state_enabled="true" android:state_selected="true" android:color="@color/live_card_gray"/>
+    <item android:color="@color/live_daynight_text_color_gray"/>
+</selector>

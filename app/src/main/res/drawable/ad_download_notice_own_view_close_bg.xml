@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke android:width="1px" android:color="@color/ad_download_notice_own_view_close_bg"/>
+    <size android:height="16dp" android:width="43dp"/>
+    <solid android:color="#00000000"/>
+    <corners android:radius="8dp"/>
+</shape>

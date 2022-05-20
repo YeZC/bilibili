@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="false" android:drawable="@drawable/shape_circle_border1_radius11_white_v2_night"/>
+    <item android:state_selected="true">
+        <layer-list>
+            <item>
+                <shape>
+                    <corners android:radius="11dp"/>
+                    <solid android:color="#d44e7d"/>
+                    <size android:height="22dp" android:width="22dp"/>
+                </shape>
+            </item>
+            <item android:drawable="@drawable/ic_origin_image_checked"/>
+        </layer-list>
+    </item>
+    <item android:drawable="@android:color/transparent"/>
+</selector>

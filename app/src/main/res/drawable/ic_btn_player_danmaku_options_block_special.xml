@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:variablePadding="false">
+    <item android:state_checked="true" android:drawable="@drawable/biliplayer_ic_danmaku_shield_seniored"/>
+    <item android:state_pressed="true" android:drawable="@drawable/biliplayer_ic_danmaku_shield_seniored"/>
+    <item android:state_enabled="false" android:drawable="@drawable/biliplayer_ic_danmaku_shield_senior"/>
+    <item android:drawable="@drawable/biliplayer_ic_danmaku_shield_senior"/>
+</selector>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/biligame_dip_24"/>
+    <stroke android:width="@dimen/biligame_dip_0_33" android:color="@color/Ba0_alpha10"/>
+</shape>

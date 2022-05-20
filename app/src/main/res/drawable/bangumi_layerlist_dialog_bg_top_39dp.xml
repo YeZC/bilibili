@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:gravity="fill" android:drawable="@color/bangumi_common_transparent_white"/>
+    <item android:gravity="fill" android:drawable="@drawable/bangumi_shape_roundrect_white_radius_12" android:top="39dp"/>
+</layer-list>

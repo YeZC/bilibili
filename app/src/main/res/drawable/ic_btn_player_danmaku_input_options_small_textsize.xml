@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:state_checked="true" android:drawable="@drawable/biliplayer_ic_danmaku_text_small" app:drawableTint="@color/pink"/>
+    <item android:drawable="@drawable/biliplayer_ic_danmaku_text_small"/>
+</selector>

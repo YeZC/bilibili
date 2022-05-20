@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/megvii_liveness_start_button_bg"/>
+    <item android:bottom="13dp">
+        <shape>
+            <corners android:radius="40dp"/>
+            <solid android:color="@color/megvii_liveness_button_pressed"/>
+        </shape>
+    </item>
+</layer-list>

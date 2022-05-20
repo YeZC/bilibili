@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="150" android:drawable="@drawable/mall_search_loading01"/>
+    <item android:duration="150" android:drawable="@drawable/mall_search_loading02"/>
+    <item android:duration="150" android:drawable="@drawable/mall_search_loading03"/>
+    <item android:duration="150" android:drawable="@drawable/mall_search_loading02"/>
+</animation-list>

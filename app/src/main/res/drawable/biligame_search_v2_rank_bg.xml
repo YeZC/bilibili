@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="12dp"/>
+    <stroke android:width="1dp" android:color="@color/biligame_Lb5_12_6"/>
+    <gradient android:startColor="@color/biligame_Lb0_60" android:endColor="@color/biligame_Wh0_60" android:angle="270"/>
+</shape>

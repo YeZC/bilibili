@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/Pi5"/>
+    <corners android:topLeftRadius="@dimen/following_cover_round_radius" android:topRightRadius="@dimen/following_cover_round_radius" android:bottomLeftRadius="@dimen/following_cover_round_radius" android:bottomRightRadius="@dimen/following_cover_round_radius"/>
+</shape>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/theme_color_bg_gray_1"/>
+    <stroke android:width="0.5dp" android:color="@color/live_voice_link_input_border"/>
+    <corners android:radius="10dp"/>
+</shape>

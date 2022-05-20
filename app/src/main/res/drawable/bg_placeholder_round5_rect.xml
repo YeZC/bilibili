@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/main_Ga2"/>
+            <corners android:topLeftRadius="@dimen/cover_round_radius_big" android:topRightRadius="@dimen/cover_round_radius_big" android:bottomLeftRadius="@dimen/cover_round_radius_big" android:bottomRightRadius="@dimen/cover_round_radius_big"/>
+        </shape>
+    </item>
+    <item android:gravity="center" android:drawable="@drawable/bg_following_default_image_tv"/>
+</layer-list>

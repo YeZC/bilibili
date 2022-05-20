@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="150" android:drawable="@drawable/ic_laoding_anim_01"/>
+    <item android:duration="150" android:drawable="@drawable/ic_laoding_anim_02"/>
+    <item android:duration="150" android:drawable="@drawable/ic_laoding_anim_03"/>
+</animation-list>

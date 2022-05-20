@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:state_pressed="true" android:drawable="@drawable/biliplayer_ic_topbar_share_bold" app:drawableTint="@color/white_alpha50"/>
+    <item android:drawable="@drawable/biliplayer_ic_topbar_share_bold" app:drawableTint="@color/white"/>
+</selector>

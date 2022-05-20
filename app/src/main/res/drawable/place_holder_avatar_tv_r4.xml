@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/main_Ga2"/>
+            <corners android:radius="@dimen/following_cover_round_radius"/>
+        </shape>
+    </item>
+    <item android:gravity="center" android:drawable="@drawable/ic_place_holder_avatar_tv"/>
+</layer-list>

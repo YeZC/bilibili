@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/right">
+        <shape>
+            <corners android:radius="1000dp"/>
+        </shape>
+    </item>
+    <item android:id="@+id/left" android:right="114dp">
+        <shape>
+            <corners android:topLeftRadius="1000dp" android:bottomLeftRadius="1000dp"/>
+        </shape>
+    </item>
+</layer-list>

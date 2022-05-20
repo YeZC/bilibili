@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_pressed="true">
+        <shape>
+            <corners android:radius="4dp"/>
+            <stroke android:width="0.5dp" android:color="@color/color_common_dialog_translucent_ga4"/>
+        </shape>
+    </item>
+    <item android:state_enabled="false">
+        <shape>
+            <corners android:radius="4dp"/>
+            <stroke android:width="0.5dp" android:color="@color/color_common_dialog_translucent_ga4"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <corners android:radius="4dp"/>
+            <stroke android:width="0.5dp" android:color="@color/Ga4"/>
+        </shape>
+    </item>
+</selector>

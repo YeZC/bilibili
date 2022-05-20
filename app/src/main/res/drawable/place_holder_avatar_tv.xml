@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/Si2_u"/>
+        </shape>
+    </item>
+    <item android:gravity="center">
+        <bitmap android:gravity="center" android:src="@drawable/ic_place_holder_avatar_tv"/>
+    </item>
+</layer-list>

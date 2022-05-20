@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/ad_search_round_radius"/>
+            <solid android:color="@android:color/transparent"/>
+            <stroke android:width="0.5dp" android:color="@color/Ga4"/>
+        </shape>
+    </item>
+</selector>

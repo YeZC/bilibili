@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="@color/bili_pay_daynight_color_divider_line_for_white"/>
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="@color/bili_pay_theme_color_secondary"/>
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+</selector>

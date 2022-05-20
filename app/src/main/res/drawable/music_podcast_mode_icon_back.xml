@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="0">
+        <shape android:shape="oval">
+            <size android:height="44dp" android:width="44dp"/>
+            <solid android:color="@color/Graph_bg_thin"/>
+        </shape>
+    </item>
+    <item android:maxLevel="1">
+        <shape android:shape="oval">
+            <size android:height="44dp" android:width="44dp"/>
+            <solid android:color="@color/Brand_pink_thin"/>
+        </shape>
+    </item>
+</level-list>

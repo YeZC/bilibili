@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:bottomLeftRadius="@dimen/bangumi_corner_card_1" android:bottomRightRadius="@dimen/bangumi_corner_card_1"/>
+            <solid android:color="#1a000000"/>
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <scale android:scaleWidth="100%">
+            <shape>
+                <corners android:topRightRadius="@dimen/bangumi_corner_card_1" android:bottomLeftRadius="@dimen/bangumi_corner_card_1" android:bottomRightRadius="@dimen/bangumi_corner_card_1"/>
+                <solid android:color="@color/transparent"/>
+            </shape>
+        </scale>
+    </item>
+    <item android:id="@android:id/progress">
+        <scale android:scaleWidth="100%">
+            <shape>
+                <corners android:topRightRadius="@dimen/bangumi_corner_card_1" android:bottomLeftRadius="@dimen/bangumi_corner_card_1" android:bottomRightRadius="@dimen/bangumi_corner_card_1"/>
+                <solid android:color="@color/bangumi_vip_pink_color"/>
+            </shape>
+        </scale>
+    </item>
+</layer-list>

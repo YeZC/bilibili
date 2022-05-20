@@ -1,0 +1,4 @@
+include ':base'
+include ':mall'
+include ':app'
+rootProject.name = "bilibili"

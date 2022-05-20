@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.bilibili.magicasakura.widgets.TintImageView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/indicator" android:layout_width="16dp" android:layout_height="16dp" android:cropToPadding="true" app:imageTint="@color/Ga5" app:srcCompat="@drawable/ic_vector_arrow_right"/>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <corners android:radius="22.5dp"/>
+            <gradient android:startColor="@color/live_emoticon_guide_guard_stroke_start" android:endColor="@color/live_emoticon_guide_guard_stroke_end" android:angle="45"/>
+        </shape>
+    </item>
+    <item android:left="1dp" android:top="1dp" android:right="1dp" android:bottom="1dp">
+        <shape>
+            <corners android:radius="22.5dp"/>
+            <gradient android:startColor="@color/live_emoticon_guide_guard_solid_start" android:endColor="@color/live_emoticon_guide_guard_solid_end" android:angle="45"/>
+        </shape>
+    </item>
+</layer-list>

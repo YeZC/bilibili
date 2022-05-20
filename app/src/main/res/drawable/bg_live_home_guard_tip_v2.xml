@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="4dp"/>
+            <gradient android:startColor="@color/live_home_guard_tip_border_start_color" android:endColor="@color/live_home_guard_tip_border_end_color" android:angle="0" android:type="linear"/>
+        </shape>
+    </item>
+    <item android:left="1dp" android:top="1dp" android:right="1dp" android:bottom="1dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="4dp"/>
+            <gradient android:startColor="@color/live_home_guard_tip_content_start_color" android:endColor="@color/live_home_guard_tip_content_end_color" android:angle="0" android:type="linear" android:centerColor="@color/live_home_guard_tip_content_center_color"/>
+        </shape>
+    </item>
+</layer-list>

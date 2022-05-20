@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient android:startColor="@color/biligame_Ga0_transparent" android:endColor="@color/Ga0" android:angle="270"/>
+</shape>

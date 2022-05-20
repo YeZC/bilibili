@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient android:startColor="#34b7ef" android:endColor="#39d5e9" android:angle="0"/>
+    <corners android:topLeftRadius="2dp" android:topRightRadius="2dp" android:bottomLeftRadius="10dp" android:bottomRightRadius="2dp"/>
+    <padding android:left="@dimen/biligame_dip_10" android:top="1.3dp" android:right="@dimen/biligame_dip_8" android:bottom="1.3dp"/>
+</shape>

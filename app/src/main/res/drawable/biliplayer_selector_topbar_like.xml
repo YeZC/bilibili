@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:state_selected="true" android:drawable="@drawable/biliplayer_ic_topbar_liked" app:drawableTint="@color/pink">
+        <color android:color="@color/Pi5_u"/>
+    </item>
+    <item android:state_selected="false" android:drawable="@drawable/biliplayer_ic_topbar_like" app:drawableTint="@color/Wh0_u">
+        <color android:color="@color/Wh0_u"/>
+    </item>
+</selector>

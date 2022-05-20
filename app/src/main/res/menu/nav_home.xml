@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_home"
+        android:title="首页"
+        />
+    <item android:id="@+id/action_dynamic"
+        android:title="动态"
+        />
+    <item android:id="@+id/action_vip_buy"
+        android:title="会员购"
+        />
+    <item android:id="@+id/action_my"
+        android:title="我的"
+        />
+</menu>

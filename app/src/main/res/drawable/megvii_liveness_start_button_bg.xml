@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#05e0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+    <item android:bottom="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#1fe0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+    <item android:bottom="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#42e0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+    <item android:bottom="5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#61e0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+    <item android:bottom="6dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#7ae0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+    <item android:bottom="7dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#8ae0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+    <item android:bottom="8dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#a3e0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+    <item android:bottom="9dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#b8e0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+    <item android:bottom="10dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#cce0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+    <item android:bottom="11dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#e0e0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+    <item android:bottom="12dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#f5e0e3e5"/>
+            <corners android:radius="40dp"/>
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="ad_feed_score_icon_placeholder">#00000000</drawable>
+    <drawable name="material_ic_keyboard_arrow_next_black_24dp">@drawable/material_ic_keyboard_arrow_right_black_24dp</drawable>
+    <drawable name="material_ic_keyboard_arrow_previous_black_24dp">@drawable/material_ic_keyboard_arrow_left_black_24dp</drawable>
+    <drawable name="notification_template_icon_bg">#3333b5e5</drawable>
+    <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
+    <drawable name="sobot_btn_skill_normal">#666666</drawable>
+    <drawable name="sobot_btn_skill_pressed">#676f6f</drawable>
+    <drawable name="sobot_button_backward_normal">#0000</drawable>
+    <drawable name="sobot_button_backward_pressed">#ff3030</drawable>
+    <drawable name="sobot_color_drawable_text_black">#000000</drawable>
+    <drawable name="sobot_color_drawbale_text_white">#ffffff</drawable>
+</resources>

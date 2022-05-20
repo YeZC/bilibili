@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_pressed="true">
+        <shape>
+            <corners android:radius="@dimen/bangumi_corner_card_2"/>
+            <solid android:color="@color/gray_light"/>
+        </shape>
+    </item>
+    <item android:state_enabled="true">
+        <shape>
+            <solid android:color="@color/Ga2"/>
+            <corners android:radius="@dimen/bangumi_corner_card_2"/>
+        </shape>
+    </item>
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="@color/gray_light" android:alpha="0.3"/>
+            <corners android:radius="@dimen/bangumi_corner_card_2"/>
+        </shape>
+    </item>
+</selector>

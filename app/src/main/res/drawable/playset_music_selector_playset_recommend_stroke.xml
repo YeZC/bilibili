@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true" android:tint="@color/Pi5" android:drawable="@drawable/playset_music_icon_pink_recommend_stroke"/>
+    <item android:tint="@color/Ga4" android:drawable="@drawable/playset_music_icon_gray_recommend_stroke"/>
+</selector>

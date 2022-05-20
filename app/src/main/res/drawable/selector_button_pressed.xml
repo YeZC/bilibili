@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/bili_rect_r4_pressed"/>
+    <item android:state_pressed="false" android:drawable="@drawable/bili_rect_r4_wh0"/>
+</selector>

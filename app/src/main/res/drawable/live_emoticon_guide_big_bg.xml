@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:topLeftRadius="@dimen/live_guide_top_radius" android:topRightRadius="@dimen/live_guide_top_radius"/>
+    <solid android:color="@color/live_emoticon_guide_bg_color"/>
+</shape>

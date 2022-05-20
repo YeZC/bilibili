@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient android:startColor="@color/Wh0" android:endColor="@color/bili_app_color_alpha0_wh0" android:angle="90"/>
+</shape>

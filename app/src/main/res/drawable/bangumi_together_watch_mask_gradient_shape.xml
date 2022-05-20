@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient android:startColor="@color/bangumi_gradient_online_color_start" android:endColor="@color/bangumi_gradient_online_color_end" android:angle="0"/>
+</shape>

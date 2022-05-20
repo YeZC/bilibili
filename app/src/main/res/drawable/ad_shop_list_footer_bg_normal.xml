@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="4dp"/>
+    <solid android:color="@color/ad_show_list_bg"/>
+    <stroke android:width="0.5dp" android:color="@color/ad_show_list_footer_border"/>
+</shape>

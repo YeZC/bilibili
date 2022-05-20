@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:topLeftRadius="12dp" android:topRightRadius="12dp"/>
+    <gradient android:startColor="@color/mall_blind_box_asset_new_style_fillet_start_color" android:endColor="@color/mall_blind_box_asset_new_style_fillet_middle_color_1" android:angle="270"/>
+</shape>

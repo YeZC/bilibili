@@ -1,0 +1,7 @@
+values/attrs -> itemMaxLines
+values/attrs -> layout_columnSpan
+values/attrs -> layout_rowSpan
+values/styles -> 注释 @id/toolbar
+
+todo：
+处理layout文件的报错

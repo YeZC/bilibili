@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="4dp"/>
+            <solid android:color="@color/Graph_bg_thick"/>
+        </shape>
+    </item>
+    <item android:gravity="center" android:id="@+id/placeholder_default_tv" android:drawable="@drawable/ic_vector_general_default_tv_v2"/>
+</layer-list>

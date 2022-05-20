@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bili_story_ctrl_normal" android:maxLevel="0"/>
+    <item android:drawable="@drawable/bili_story_ctrl_clean" android:maxLevel="1"/>
+    <item android:drawable="@drawable/bili_story_screen_to_landscape" android:maxLevel="2"/>
+</level-list>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient android:startColor="@color/biligame_black_transparent_cc" android:endColor="@color/colorTransparent" android:angle="0" android:type="linear" android:centerX="0.8"/>
+</shape>

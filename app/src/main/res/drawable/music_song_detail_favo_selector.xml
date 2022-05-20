@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <bitmap android:src="@drawable/music_icon_song_favoed" android:tint="@color/Pi5"/>
+    </item>
+    <item>
+        <bitmap android:src="@drawable/music_icon_song_favo"/>
+    </item>
+</selector>

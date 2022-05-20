@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android" android:fromDegrees="0" android:toDegrees="360" android:pivotX="50%" android:pivotY="50%">
+    <shape android:shape="ring" android:innerRadiusRatio="3" android:thicknessRatio="10" android:useLevel="false">
+        <gradient android:startColor="@color/pink" android:endColor="@color/pink" android:useLevel="false" android:angle="0" android:type="sweep" android:centerY="0.5" android:centerColor="#ffffff"/>
+    </shape>
+</rotate>

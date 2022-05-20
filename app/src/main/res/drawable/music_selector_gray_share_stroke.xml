@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <bitmap android:src="@drawable/music_icon_gray_share_stroke" android:tint="@color/Ga4"/>
+    </item>
+    <item android:tint="@color/Ga8" android:drawable="@drawable/music_icon_gray_share_stroke"/>
+</selector>

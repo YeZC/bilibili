@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <layer-list>
+            <item android:left="-6dp" android:top="-6dp" android:right="-6dp">
+                <shape>
+                    <solid android:color="#00ffffff"/>
+                    <stroke android:width="1.5dp" android:color="@color/pink_alpha30"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:drawable="@drawable/bili_player_text_underline"/>
+</selector>
