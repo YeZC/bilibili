@@ -12,7 +12,14 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="33dp"
+        app:tabMode="scrollable"
+        app:tabIndicatorFullWidth="false"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        app:tabIndicatorHeight="3dp"
+        android:background="@color/white"
+        app:tabSelectedTextColor="@color/theme_color_primary"
         />
 
     <androidx.viewpager2.widget.ViewPager2

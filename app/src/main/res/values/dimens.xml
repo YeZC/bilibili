@@ -640,7 +640,7 @@
     <dimen name="design_bottom_navigation_item_max_width">96dp</dimen>
     <dimen name="design_bottom_navigation_item_min_width">56dp</dimen>
     <dimen name="design_bottom_navigation_label_padding">10dp</dimen>
-    <dimen name="design_bottom_navigation_margin">8dp</dimen>
+    <dimen name="design_bottom_navigation_margin">4dp</dimen>
     <dimen name="design_bottom_navigation_shadow_height">1dp</dimen>
     <dimen name="design_bottom_navigation_text_size">12sp</dimen>
     <dimen name="design_bottom_sheet_elevation">8dp</dimen>
@@ -673,7 +673,7 @@
     <dimen name="design_snackbar_padding_vertical_2lines">16dp</dimen>
     <dimen name="design_snackbar_text_size">14sp</dimen>
     <dimen name="design_tab_max_width">264dp</dimen>
-    <dimen name="design_tab_scrollable_min_width">72dp</dimen>
+    <dimen name="design_tab_scrollable_min_width">2dp</dimen>
     <dimen name="design_tab_text_size">14sp</dimen>
     <dimen name="design_tab_text_size_2line">12sp</dimen>
     <dimen name="design_textinput_caption_translate_y">5dp</dimen>
