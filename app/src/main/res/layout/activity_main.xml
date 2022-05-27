@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include layout="@layout/bili_app_layout_home_top_tool"/>
+    <include android:id="@+id/bili_app_toolbar" layout="@layout/bili_app_layout_home_top_tool"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="33dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bili_app_toolbar"
         app:tabMode="scrollable"
         app:tabIndicatorFullWidth="false"
         android:paddingStart="5dp"
@@ -22,11 +23,25 @@
         app:tabSelectedTextColor="@color/theme_color_primary"
         />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/bili_app_iv_more"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:src="@drawable/ic_more_category"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tablayout"
+        app:layout_constraintBottom_toBottomOf="@+id/tablayout"
+        />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tablayout"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
@@ -38,7 +53,10 @@
         android:minHeight="48dp"
         android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 
 
@@ -52,4 +70,4 @@
 <!--        app:defaultNavHost="true"-->
 <!--        />-->
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
