@@ -19,6 +19,7 @@
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
         app:tabIndicatorHeight="3dp"
+        android:layout_marginRight="12dp"
         android:background="@color/white"
         app:tabSelectedTextColor="@color/theme_color_primary"
         />
@@ -57,7 +58,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
-
 
 
     <!--    <androidx.fragment.app.FragmentContainerView-->

@@ -15,9 +15,13 @@ import android.widget.ImageView
 import androidx.core.view.get
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.hjq.permissions.OnPermissionCallback
+import com.hjq.permissions.Permission
+import com.hjq.permissions.XXPermissions
 import com.yzc.bilibili.util.toPx
 import com.yzc.bilibili.view.DrawableSelector
 import com.yzc.bilibili.viewpager.DemoPagerAdapter
@@ -45,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         navigationInit(bottomNav)
         tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                println("dsfsd")
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
