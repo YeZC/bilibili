@@ -7,6 +7,19 @@ class BiliRecommend{
         this.banner_item = banner_item
     }
 
+    constructor(card_type: String? = null, cover: String? = null, title: String? = null, uri: String? = null, small_cover: SmallCover? = null) {
+        this.card_type = card_type
+        this.cover = cover
+        this.title = title
+        this.uri = uri
+        this.small_cover = small_cover
+    }
+
+    constructor(card_type: String? = null, cm: CM? = null) {
+        this.card_type = card_type
+        this.cm = cm
+    }
+
     // universal
     var card_type: String? = null
 
@@ -17,8 +30,16 @@ class BiliRecommend{
     var cover: String? = null
     var title: String? = null
     var uri: String? = null
+    var small_cover: SmallCover? = null
+
+    // cm_v2
+    var cm: CM? = null
+
 }
 
+/**
+ * banner
+ */
 class BannerItem(
     val type: String? = null,
     val index: Int? = null,
@@ -31,81 +52,59 @@ class BannerItem(
     )
 }
 
-
-class ThreePoint(
-
+/**
+ * small_cover_v2
+ */
+class SmallCover(
+    val talk_back: String? = null,
+    val cover_left_text_1: String? = null,
+    val cover_left_icon_1: Int? = null,
+    val cover_left_1_content_description: String? = null,
+    val cover_left_text_2: String? = null,
+    val cover_left_icon_2: Int? = null,
+    val cover_left_2_content_description: String? = null,
+    val cover_right_text: String? = null,
+    val cover_right_content_description: String? = null,
+    // desc_button
+    val text: String? = null,
+    val uri: String? = null,
+    val event: String? = null,
+    val type: Int? = null,
+    // goto_icon
+    val icon_url: String? = null,
+    val icon_night_url: String? = null,
+    val icon_width: Int? = null,
+    val icon_height: Int? = null,
 )
 
-//{
-//    "card_type": "banner_v8",
-//    "card_goto": "banner",
-//    "args": {},
-//    "idx": 1605789194,
-//    "track_id": "all_27.shjd-ai-recsys-74.1653895262509.787",
-//    "hash": "15910663339887044658",
-//    "banner_item": [
-//    {
-//        "type": "static",
-//        "resource_id": 4332,
-//        "id": 1000649,
-//        "index": 1,
-//        "static_banner": {
-//        "id": 1000649,
-//        "title": "我的帥氣女友！",
-//        "image": "http://i0.hdslb.com/bfs/banner/fa700e0c660e4d2a3203d3cc8625b7e375360aa9.png",
-//        "hash": "8a5ba1aedab7e2ea485fea22d2124aa0",
-//        "uri": "https://www.bilibili.com/bangumi/play/ep475917?goto=static_banner",
-//        "request_id": "1653895262693q172a27a2a37q5088",
-//        "src_id": 4333,
-//        "is_ad_loc": true,
-//        "client_ip": "156.249.17.25",
-//        "server_type": 0,
-//        "resource_id": 4332,
-//        "index": 1,
-//        "cm_mark": 0
-//    }
-//    },
-//    {
-//        "type": "static",
-//        "resource_id": 4332,
-//        "id": 1000731,
-//        "index": 2,
-//        "static_banner": {
-//        "id": 1000731,
-//        "title": "跟着王心凌一起跳爱你！",
-//        "image": "http://i0.hdslb.com/bfs/banner/dc91ff69beea43ff7de4211594bc2f5cdfdf5a40.jpg",
-//        "hash": "e77218cd83c3f298c5b8456825e1da19",
-//        "uri": "https://www.bilibili.com/blackboard/dynamic/308011",
-//        "request_id": "1653895262693q172a27a2a37q5088",
-//        "src_id": 4334,
-//        "is_ad_loc": true,
-//        "client_ip": "156.249.17.25",
-//        "server_type": 0,
-//        "resource_id": 4332,
-//        "index": 2,
-//        "cm_mark": 0
-//    }
-//    },
-//    {
-//        "type": "static",
-//        "resource_id": 4332,
-//        "id": 1000326,
-//        "index": 3,
-//        "static_banner": {
-//        "id": 1000326,
-//        "title": "全员性格大揭秘，深挖不为人知另一面？",
-//        "image": "http://i0.hdslb.com/bfs/banner/dd0dbd3ca95ec47a1950d7651118fd3a875d5fd9.png",
-//        "hash": "77c31d08d693ccdfdc8cffcbef8140f3",
-//        "uri": "https://www.bilibili.com/bangumi/play/ep513940?goto=static_banner",
-//        "request_id": "1653895262693q172a27a2a37q5088",
-//        "src_id": 4335,
-//        "is_ad_loc": true,
-//        "client_ip": "156.249.17.25",
-//        "server_type": 0,
-//        "resource_id": 4332,
-//        "index": 3,
-//        "cm_mark": 0
-//    }
-//    }
-//    ]
-//}
+/**
+ * cm_v2
+ */
+class CM(
+    val cover_left_text_1: String? = null,
+    val title: String? = null,
+    val cover: String? = null,
+    val goto: String? = null,
+    val cover_right_content_description: String? = null,
+    val cover_left_2_content_description: String? = null,
+    val uri: String? = null,
+    val cover_left_1_content_description: String? = null,
+    val ad_info: AdInfo? = null,
+    val desc_button: DescButton? = null,
+){
+    // ad_info
+    class AdInfo(
+        // creative_content
+        val image_url: String? = null,
+        val description: String? = null,
+        val title: String? = null,
+        val url: String? = null,
+        val video_id: Long? = null
+    )
+    // desc_button
+    class DescButton(
+        val text: String? = null,
+        val event: String? = null,
+        val type: Int? = null
+    )
+}
