@@ -15,26 +15,33 @@ class BiliRecommend{
         this.small_cover = small_cover
     }
 
-    constructor(card_type: String? = null, cm: CM? = null) {
+    constructor(card_type: String? = null, cover: String? = null, title: String? = null, uri: String? = null,  cm: CM? = null) {
         this.card_type = card_type
         this.cm = cm
     }
 
     // universal
     var card_type: String? = null
-
-    // type banner
-    var banner_item: MutableList<BannerItem>? = null
-
-    // small_cover_v2
+    var card_goto: String? = null
     var cover: String? = null
     var title: String? = null
     var uri: String? = null
-    var small_cover: SmallCover? = null
+    var creative_style: Int = -1
 
+    // type banner
+    var banner_item: MutableList<BannerItem>? = null
+    // small_cover_v2
+    var small_cover: SmallCover? = null
     // cm_v2
     var cm: CM? = null
 
+}
+
+enum class RecommendVH(val cardType: String, val type: Int){
+    BANNER("banner_v8", 0),
+    SMALL_COVER("small_cover_v2", 1),
+    CM("cm_v2", 2),
+    EMPTY("empty", 3)
 }
 
 /**
@@ -66,28 +73,35 @@ class SmallCover(
     val cover_right_text: String? = null,
     val cover_right_content_description: String? = null,
     // desc_button
-    val text: String? = null,
-    val uri: String? = null,
-    val event: String? = null,
-    val type: Int? = null,
+    val desc_button: Boolean = false,
+    val desc_button_text: String? = null,
+    val desc_button_uri: String? = null,
+    val desc_button_event: String? = null,
+    val desc_button_type: Int? = null,
     // goto_icon
-    val icon_url: String? = null,
-    val icon_night_url: String? = null,
-    val icon_width: Int? = null,
-    val icon_height: Int? = null,
+    val goto_icon: Boolean = false,
+    val goto_icon_icon_url: String? = null,
+    val goto_icon_icon_night_url: String? = null,
+    val goto_icon_icon_width: Int? = null,
+    val goto_icon_icon_height: Int? = null,
+    // rcmd_reason_style
+    val rcmd_reason_style: Boolean = false,
+    val rcmd_reason_style_text: String? = null,
+    val rcmd_reason_style_text_color: String? = null,
+    val rcmd_reason_style_bg_color: String? = null
 )
 
 /**
  * cm_v2
  */
 class CM(
-    val cover_left_text_1: String? = null,
-    val title: String? = null,
-    val cover: String? = null,
+    // universal
     val goto: String? = null,
+    val uri: String? = null,
+
+    val cover_left_text_1: String? = null,
     val cover_right_content_description: String? = null,
     val cover_left_2_content_description: String? = null,
-    val uri: String? = null,
     val cover_left_1_content_description: String? = null,
     val ad_info: AdInfo? = null,
     val desc_button: DescButton? = null,

@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+        viewPager.setCurrentItem(1, false)
     }
 
     @SuppressLint("ClickableViewAccessibility")

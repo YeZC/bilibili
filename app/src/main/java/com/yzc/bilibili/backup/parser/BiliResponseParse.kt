@@ -28,7 +28,7 @@ class BiliResponseParse {
                             cmItems(this.items!!, itemObject)
                         }
                         else -> {
-                            println("toBiliRecommend: $cardType parse error")
+                            println("toBiliRecommend: [${cardType}] parse error")
                         }
                     }
                 }
@@ -43,10 +43,11 @@ class BiliResponseParse {
 
             items.add(BiliRecommend(
                 card_type = itemObject.optString("card_type"),
+                cover = itemObject.optString("cover"),
+                title = itemObject.optString("title"),
+                uri = itemObject.optString("uri"),
                 cm = CM(
                     cover_left_text_1 = itemObject.optString("cover_left_text_1"),
-                    title = itemObject.optString("title"),
-                    cover = itemObject.optString("cover"),
                     goto = itemObject.optString("goto"),
                     cover_right_content_description = itemObject.optString("cover_right_content_description"),
                     cover_left_2_content_description = itemObject.optString("cover_left_2_content_description"),
@@ -71,6 +72,7 @@ class BiliResponseParse {
         private fun smallCoverItems(items: MutableList<BiliRecommend>, itemObject: JSONObject) {
             val desc_button = itemObject.optJSONObject("desc_button")
             val goto_icon = itemObject.optJSONObject("goto_icon")
+            val rcmd_reason_style = itemObject.optJSONObject("rcmd_reason_style")
             items.add(BiliRecommend(
                 card_type = itemObject.optString("card_type"),
                 cover = itemObject.optString("cover"),
@@ -87,15 +89,22 @@ class BiliResponseParse {
                     cover_right_text = itemObject.optString("cover_right_text"),
                     cover_right_content_description = itemObject.optString("cover_right_content_description"),
                     // desc_button
-                    text = desc_button?.optString("text"),
-                    uri = desc_button?.optString("uri"),
-                    event = desc_button?.optString("event"),
-                    type = desc_button?.optInt("type"),
+                    desc_button = desc_button != null,
+                    desc_button_text = desc_button?.optString("text"),
+                    desc_button_uri = desc_button?.optString("uri"),
+                    desc_button_event = desc_button?.optString("event"),
+                    desc_button_type = desc_button?.optInt("type"),
                     // goto_icon
-                    icon_url = goto_icon?.optString("icon_url"),
-                    icon_night_url = goto_icon?.optString("icon_night_url"),
-                    icon_width = goto_icon?.optInt("icon_width"),
-                    icon_height = goto_icon?.optInt("icon_height"),
+                    goto_icon = goto_icon != null,
+                    goto_icon_icon_url = goto_icon?.optString("icon_url"),
+                    goto_icon_icon_night_url = goto_icon?.optString("icon_night_url"),
+                    goto_icon_icon_width = goto_icon?.optInt("icon_width"),
+                    goto_icon_icon_height = goto_icon?.optInt("icon_height"),
+                    // rcmd_reason_style
+                    rcmd_reason_style = rcmd_reason_style != null,
+                    rcmd_reason_style_text = rcmd_reason_style?.optString("text"),
+                    rcmd_reason_style_text_color = rcmd_reason_style?.optString("text_color"),
+                    rcmd_reason_style_bg_color = rcmd_reason_style?.optString("bg_color"),
                 )
             ))
         }

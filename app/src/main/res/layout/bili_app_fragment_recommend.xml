@@ -1,35 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/ad_feed_card_content_margin_horizontal"
-    android:background="@color/Ga1"
     android:id="@+id/swipe_refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:paddingLeft="@dimen/ad_feed_card_content_margin_horizontal"
+        android:paddingRight="@dimen/ad_feed_card_content_margin_horizontal"
+        android:background="@color/Ga1"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.youth.banner.Banner
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="210dp"
-            app:banner_indicator_marginRight="10dp"
-            app:banner_indicator_marginBottom="5dp"
-            app:banner_indicator_normal_width="5dp"
-            app:banner_indicator_selected_width="5dp"
-            />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_marginTop="@dimen/ad_feed_card_content_margin_horizontal"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"/>
-
-    </LinearLayout>
-
+        android:layout_height="match_parent"/>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
