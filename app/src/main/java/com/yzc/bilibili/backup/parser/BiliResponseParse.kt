@@ -1,10 +1,12 @@
 package com.yzc.bilibili.backup.parser
 
+import com.yzc.base.util.logd
 import com.yzc.bilibili.backup.bean.*
 import org.json.JSONObject
 
 class BiliResponseParse {
     companion object {
+        private val TAG = BiliResponseParse::class.java.simpleName
         fun toBiliRecommend(json: JSONObject): BiliRecommendResponse{
             return BiliRecommendResponse().apply {
                 this.code = json.optInt("code")
@@ -16,6 +18,7 @@ class BiliResponseParse {
 
                 for(i in 0..itemArr?.length()!!){
                     itemObject = itemArr.optJSONObject(i)
+//                    logd(TAG, "BiliRecommendResponse: i=$i,$itemObject")
                     var cardType = itemObject?.optString("card_type")
                     when(cardType){
                         "banner_v8" -> {
@@ -38,14 +41,20 @@ class BiliResponseParse {
         private fun cmItems(items: MutableList<BiliRecommend>, itemObject: JSONObject) {
             var adInfo = itemObject.optJSONObject("ad_info")
             var creativeContent = adInfo?.optJSONObject("creative_content")
+            var extra = adInfo?.optJSONObject("extra")
+            var card = extra?.optJSONObject("card")
+            var adTagStyle = card?.optJSONObject("ad_tag_style")
+            var qualityInfos = card?.optJSONArray("quality_infos")
 
             var descButton = itemObject.optJSONObject("desc_button")
 
             items.add(BiliRecommend(
                 card_type = itemObject.optString("card_type"),
+                card_goto = itemObject.optString("card_goto"),
                 cover = itemObject.optString("cover"),
                 title = itemObject.optString("title"),
                 uri = itemObject.optString("uri"),
+                creative_style = itemObject.optInt("creative_style"),
                 cm = CM(
                     cover_left_text_1 = itemObject.optString("cover_left_text_1"),
                     goto = itemObject.optString("goto"),
@@ -53,14 +62,25 @@ class BiliResponseParse {
                     cover_left_2_content_description = itemObject.optString("cover_left_2_content_description"),
                     uri = itemObject.optString("uri"),
                     cover_left_1_content_description = itemObject.optString("cover_left_1_content_description"),
-                    CM.AdInfo(
+                    ad_info = CM.AdInfo(
                         image_url = creativeContent?.optString("image_url"),
                         description = creativeContent?.optString("description"),
                         title = creativeContent?.optString("title"),
                         url = creativeContent?.optString("url"),
-                        video_id = creativeContent?.optLong("video_id")
+                        video_id = creativeContent?.optLong("video_id"),
+                        extra_card_ad_tag_style_text_color = adTagStyle?.optString("text_color"),
+                        extra_card_ad_tag_style_text = adTagStyle?.optString("text"),
+                        quality_infos = mutableListOf<CM.QualityInfo>().apply {
+                            for(i in 0 until (qualityInfos?.length()?:0)){
+                                val qualityInfo = qualityInfos?.optJSONObject(i)
+                                add(CM.QualityInfo(
+                                    icon = qualityInfo?.optString("icon"),
+                                    text = qualityInfo?.optString("text")
+                                ))
+                            }
+                        },
                     ),
-                    CM.DescButton(
+                    desc_button = CM.DescButton(
                         text = descButton?.optString("text"),
                         event = descButton?.optString("event"),
                         type = descButton?.optInt("type")
@@ -75,9 +95,11 @@ class BiliResponseParse {
             val rcmd_reason_style = itemObject.optJSONObject("rcmd_reason_style")
             items.add(BiliRecommend(
                 card_type = itemObject.optString("card_type"),
+                card_goto = itemObject.optString("card_goto"),
                 cover = itemObject.optString("cover"),
                 title = itemObject.optString("title"),
                 uri = itemObject.optString("uri"),
+                creative_style = itemObject.optInt("creative_style"),
                 SmallCover(
                     talk_back = itemObject.optString("talk_back"),
                     cover_left_text_1 = itemObject.optString("cover_left_text_1"),

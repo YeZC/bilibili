@@ -1,22 +1,23 @@
 package com.yzc.bilibili.backup.bean
 
 class BiliRecommend{
-    // index 0
-    constructor(card_type: String? = null, banner_item: MutableList<BannerItem>? = null) {
-        this.card_type = card_type
-        this.banner_item = banner_item
-    }
 
-    constructor(card_type: String? = null, cover: String? = null, title: String? = null, uri: String? = null, small_cover: SmallCover? = null) {
+    constructor(card_type: String? = null,
+                card_goto: String? = null,
+                cover: String? = null,
+                title: String? = null,
+                uri: String? = null,
+                creative_style: Int = -1,
+                small_cover: SmallCover? = null,
+                banner_item: MutableList<BannerItem>? = null,
+                cm: CM? = null) {
         this.card_type = card_type
+        this.card_goto = card_goto
         this.cover = cover
         this.title = title
         this.uri = uri
         this.small_cover = small_cover
-    }
-
-    constructor(card_type: String? = null, cover: String? = null, title: String? = null, uri: String? = null,  cm: CM? = null) {
-        this.card_type = card_type
+        this.banner_item = banner_item
         this.cm = cm
     }
 
@@ -28,11 +29,11 @@ class BiliRecommend{
     var uri: String? = null
     var creative_style: Int = -1
 
-    // type banner
+    // banner_v8={banner}
     var banner_item: MutableList<BannerItem>? = null
-    // small_cover_v2
+    // small_cover_v2={av,}
     var small_cover: SmallCover? = null
-    // cm_v2
+    // cm_v2={ad_web_s}
     var cm: CM? = null
 
 }
@@ -98,7 +99,6 @@ class CM(
     // universal
     val goto: String? = null,
     val uri: String? = null,
-
     val cover_left_text_1: String? = null,
     val cover_right_content_description: String? = null,
     val cover_left_2_content_description: String? = null,
@@ -113,12 +113,25 @@ class CM(
         val description: String? = null,
         val title: String? = null,
         val url: String? = null,
-        val video_id: Long? = null
+        val video_id: Long? = null,
+        // extra
+            // card
+                // ad_tag_style
+                val extra_card_ad_tag_style_text_color: String? = null,
+                val extra_card_ad_tag_style_text: String? = null,
+                // quality_infos(array)
+                val quality_infos: MutableList<QualityInfo>? = null
+
     )
     // desc_button
     class DescButton(
         val text: String? = null,
         val event: String? = null,
         val type: Int? = null
+    )
+    // ad_info extra card
+    class QualityInfo(
+        val icon: String? = null,
+        val text: String? = null
     )
 }
