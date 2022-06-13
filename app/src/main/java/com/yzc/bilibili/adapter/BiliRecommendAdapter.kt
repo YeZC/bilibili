@@ -1,6 +1,7 @@
 package com.yzc.bilibili.adapter
 
 import android.graphics.Color
+import android.graphics.drawable.AnimationDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ class BiliRecommendAdapter:
 
     private val TAG = BiliRecommendAdapter::class.java.simpleName
     private var mDatas: MutableList<BiliRecommend> = mutableListOf<BiliRecommend>()
+    private var footerVisible = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
         var inflater: LayoutInflater = LayoutInflater.from(parent.context)
@@ -59,27 +61,43 @@ class BiliRecommendAdapter:
                 CombinationVH(inflater.inflate(R.layout.bili_app_recyclerview_recommend, parent, false))
             }
             else  -> {
-                EmptyVH(inflater.inflate(R.layout.bili_app_recyclerview_recommend, parent, false))
+                var footer = object: AppCompatImageView(parent.context){
+                    override fun onWindowVisibilityChanged(visibility: Int) {
+                        super.onWindowVisibilityChanged(visibility)
+                        footerVisible = visibility == View.VISIBLE
+                    }
+                }.apply {
+                    layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100f.toPx(parent.context))
+                    footerVisible = true
+                    setImageResource(R.drawable.bilipay_tv_loading)
+                    (drawable as AnimationDrawable)?.start()
+                }
+                EmptyVH(footer)
             }
         }
     }
 
     override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
-        val index = if(position == 0) 0 else (position * 2) - beforeSingleLine[position]
-        if(index >= mDatas.size){
-            loge(TAG, "onBindViewHolder: position $position, index $index")
-            return
-        }
-        if(mDatas[index].card_type == RecommendVH.BANNER.cardType){
-            holder.bind(mDatas[index])
-        }else{
-            holder.bind(mDatas[index], mDatas[index + 1])
+        // footer
+        if(position < beforeSingleLine.size){
+            val index = if(position == 0) 0 else (position * 2) - beforeSingleLine[position]
+            if(index >= mDatas.size){
+                loge(TAG, "onBindViewHolder: position $position, index $index")
+                return
+            }
+            if(mDatas[index].card_type == RecommendVH.BANNER.cardType){
+                holder.bind(mDatas[index])
+            }else{
+                holder.bind(mDatas[index], mDatas[index + 1])
+            }
         }
     }
 
     private var beforeSingleLine = mutableListOf<Int>()// 单行
-    fun setDatas(list: MutableList<BiliRecommend>?){
+    fun setDatas(list: MutableList<BiliRecommend>?, clearShow: Boolean){
         if(list == null || list.size == 0) return
+        if(clearShow) mDatas.clear()
+
         var start = mDatas.size
         if(mDatas.size == 0){
             beforeSingleLine = mutableListOf()
@@ -111,18 +129,21 @@ class BiliRecommendAdapter:
     }
 
     override fun getItemCount(): Int {
-        return beforeSingleLine.size
+        return beforeSingleLine.size + 1
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (mDatas[position].card_type){
-            RecommendVH.BANNER.cardType -> RecommendVH.BANNER.type
-            RecommendVH.SMALL_COVER.cardType -> RecommendVH.SMALL_COVER.type
-            RecommendVH.CM.cardType -> RecommendVH.CM.type
-            else -> { RecommendVH.EMPTY.type }
-        }
+        return if(position < beforeSingleLine.size) {
+            when (mDatas[position]?.card_type){
+                RecommendVH.BANNER.cardType -> RecommendVH.BANNER.type
+                RecommendVH.SMALL_COVER.cardType -> RecommendVH.SMALL_COVER.type
+                RecommendVH.CM.cardType -> RecommendVH.CM.type
+                else -> { RecommendVH.EMPTY.type }
+            }
+        }else RecommendVH.EMPTY.type
     }
 
+    fun isPullUp() = footerVisible
 }
 
 

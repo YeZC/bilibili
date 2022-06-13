@@ -759,7 +759,7 @@
     <string name="answer_default_title">请转正答题</string>
     <string name="app_bar_scroll_behavior">com.bilibili.ad.adview.imax.v2.videopage.support.AppBarScrollObserverBehavior</string>
     <string name="app_bar_scroll_behavior_sticky">com.bilibili.ad.adview.imax.behavior.StickyBehavior</string>
-    <string name="app_name">bilibili</string>
+    <string name="app_name">仿bilibili</string>
     <string name="appbar_fix_bounce_behavior">tv.danmaku.bili.ui.main2.basic.FixBounceBehavior</string>
     <string name="appeal_fail_too_frequently">举报过于频繁，请稍后重试</string>
     <string name="appeal_failed">举报失败</string>
