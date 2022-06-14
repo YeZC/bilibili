@@ -1,12 +1,11 @@
 package com.yzc.bilibili.viewpager
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.yzc.bilibili.fragment.BiliRecommendFragment
+import com.yzc.bilibili.fragment.DemoFragment
 
 class DemoPagerAdapter(fm: AppCompatActivity, var data: List<String>) : FragmentStateAdapter(fm) {
 

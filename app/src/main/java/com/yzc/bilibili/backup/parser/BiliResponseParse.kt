@@ -1,42 +1,38 @@
 package com.yzc.bilibili.backup.parser
 
-import com.yzc.base.util.logd
+import com.yzc.base.util.loge
 import com.yzc.bilibili.backup.bean.*
 import org.json.JSONObject
 
 class BiliResponseParse {
     companion object {
         private val TAG = BiliResponseParse::class.java.simpleName
-        fun toBiliRecommend(json: JSONObject): BiliRecommendResponse{
-            return BiliRecommendResponse().apply {
-                this.code = json.optInt("code")
-                this.message = json.optString("message")
-
-                var itemArr = json.optJSONObject("data")?.optJSONArray("items")
-                var itemObject: JSONObject? = null
-                this.items = mutableListOf<BiliRecommend>()
-
-                for(i in 0..itemArr?.length()!!){
-                    itemObject = itemArr.optJSONObject(i)
-//                    logd(TAG, "BiliRecommendResponse: i=$i,$itemObject")
-                    var cardType = itemObject?.optString("card_type")
-                    when(cardType){
-                        "banner_v8" -> {
-                            bannerItems(this.items!!, itemObject)
-                        }
-                        "small_cover_v2" -> {
-                            smallCoverItems(this.items!!, itemObject)
-                        }
-                        "cm_v2" -> {
-                            cmItems(this.items!!, itemObject)
-                        }
-                        else -> {
-                            println("toBiliRecommend: [${cardType}] parse error")
-                        }
+        fun toBiliRecommend(json: JSONObject): MutableList<BiliRecommend> {
+            var items: MutableList<BiliRecommend> = mutableListOf<BiliRecommend>()
+            var itemArr = json.optJSONObject("data")?.optJSONArray("items")
+            var itemObject: JSONObject? = null
+            for(i in 0..itemArr?.length()!!){
+                itemObject = itemArr.optJSONObject(i)
+                var cardType = itemObject?.optString("card_type")
+                when(cardType){
+                    "banner_v8" -> {
+                        bannerItems(items, itemObject)
+                    }
+                    "small_cover_v2" -> {
+                        smallCoverItems(items, itemObject)
+                    }
+                    "cm_v2" -> {
+                        cmItems(items, itemObject)
+                    }
+                    else -> {
+                        loge(TAG, "toBiliRecommend: [${cardType}] parse error")
                     }
                 }
             }
+            return items
         }
+
+
 
         private fun cmItems(items: MutableList<BiliRecommend>, itemObject: JSONObject) {
             var adInfo = itemObject.optJSONObject("ad_info")
@@ -157,5 +153,15 @@ class BiliResponseParse {
             )
         }
 
+        fun toBiliDetailVideo(json: JSONObject): MutableList<BiliDetailVideo> {
+            var items: MutableList<BiliDetailVideo> = mutableListOf<BiliDetailVideo>()
+            var itemArr = json.optJSONObject("data")?.optJSONArray("items")
+            var itemObject: JSONObject? = null
+            for(i in 0..itemArr?.length()!!){
+                itemObject = itemArr.optJSONObject(i)
+
+            }
+            return items
+        }
     }
 }

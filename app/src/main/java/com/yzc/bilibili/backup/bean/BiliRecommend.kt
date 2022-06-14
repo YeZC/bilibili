@@ -1,6 +1,8 @@
 package com.yzc.bilibili.backup.bean
 
-class BiliRecommend{
+import com.yzc.base.api.BiliBaseResponse
+
+class BiliRecommend: BiliBaseResponse {
 
     constructor(card_type: String? = null,
                 card_goto: String? = null,

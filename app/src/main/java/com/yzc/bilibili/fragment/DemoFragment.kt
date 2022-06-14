@@ -1,4 +1,4 @@
-package com.yzc.bilibili.viewpager
+package com.yzc.bilibili.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

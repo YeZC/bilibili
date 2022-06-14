@@ -1,7 +1,6 @@
 package com.yzc.base.api
 
-open class BiliBaseResponse<T> {
+open class BiliBaseResponse {
     var code = 0
-    var message: String? = null
-    var data: T? = null
+    var message: String = "null"
 }

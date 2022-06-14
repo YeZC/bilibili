@@ -1,11 +1,7 @@
 package com.yzc.bilibili.backup
 
-import com.yzc.base.network.BiliRetrofit
-import com.yzc.bilibili.backup.bean.BiliRecommendResponse
-import com.yzc.bilibili.backup.parser.BiliResponseParse
-import org.json.JSONObject
+import com.yzc.bilibili.BaseTest
 import org.junit.Test
-import retrofit2.Retrofit
 
 class RecommendAPITest {
 
