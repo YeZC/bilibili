@@ -9,13 +9,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class RecommendViewModel : ViewModel() {
+class VideoFlowViewModel : ViewModel() {
 
-    val biliRecommend: LiveData<MutableList<BiliRecommend>>
-        get() = mBiliRecommend
+    val biliVideos: LiveData<MutableList<BiliRecommend>>
+        get() = mBiliVideos
 
 
-    private val mBiliRecommend = MutableLiveData<MutableList<BiliRecommend>>()
+    private val mBiliVideos = MutableLiveData<MutableList<BiliRecommend>>()
     private val net by lazy { RecommendNet() }
 
     init {
@@ -23,7 +23,7 @@ class RecommendViewModel : ViewModel() {
 
     fun loadData(){
         GlobalScope.launch(Dispatchers.Default) {
-            mBiliRecommend.postValue(net.getFeed())
+            mBiliVideos.postValue(net.getFeed())
         }
     }
 

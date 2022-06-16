@@ -1,5 +1,6 @@
 package com.yzc.bilibili.adapter
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
 import android.view.LayoutInflater
@@ -13,13 +14,13 @@ import com.bumptech.glide.Glide
 import com.youth.banner.Banner
 import com.youth.banner.config.IndicatorConfig
 import com.youth.banner.indicator.CircleIndicator
-import com.yzc.base.util.logd
 import com.yzc.base.util.loge
 import com.yzc.bilibili.R
 import com.yzc.bilibili.adapter.banner.RecommendBannerAdapter
-import com.yzc.bilibili.backup.bean.BannerItem
-import com.yzc.bilibili.backup.bean.BiliRecommend
-import com.yzc.bilibili.backup.bean.RecommendVH
+import com.yzc.bilibili.arch.model.bean.BannerItem
+import com.yzc.bilibili.arch.model.bean.BiliRecommend
+import com.yzc.bilibili.arch.model.bean.RecommendVH
+import com.yzc.bilibili.arch.view.VideoFlowActivity
 import com.yzc.bilibili.util.toPx
 import java.lang.RuntimeException
 
@@ -219,6 +220,15 @@ class CombinationVH(itemView: View): RecommendViewHolder(itemView) {
                 }
             }
         }?: throw RuntimeException("CombinationVH innerBind holder is null")
+        holder?.apply {
+            itemView.setOnClickListener {
+                var context = itemView.context
+                val intent = Intent(context, VideoFlowActivity::class.java).apply {
+                    putExtra(VideoFlowActivity.INTENT_AID, recommend.param)
+                }
+                context.startActivity(intent)
+            }
+        }
     }
 
     class CombinationHolder(itemView: View) {

@@ -1,7 +1,7 @@
-package com.yzc.bilibili.backup.parser
+package com.yzc.bilibili.arch.model.parser
 
 import com.yzc.base.util.loge
-import com.yzc.bilibili.backup.bean.*
+import com.yzc.bilibili.arch.model.bean.*
 import org.json.JSONObject
 
 class BiliResponseParse {
@@ -44,13 +44,15 @@ class BiliResponseParse {
 
             var descButton = itemObject.optJSONObject("desc_button")
 
-            items.add(BiliRecommend(
+            items.add(
+                BiliRecommend(
                 card_type = itemObject.optString("card_type"),
                 card_goto = itemObject.optString("card_goto"),
                 cover = itemObject.optString("cover"),
                 title = itemObject.optString("title"),
                 uri = itemObject.optString("uri"),
                 creative_style = itemObject.optInt("creative_style"),
+                param = itemObject.optString("param"),
                 cm = CM(
                     cover_left_text_1 = itemObject.optString("cover_left_text_1"),
                     goto = itemObject.optString("goto"),
@@ -69,7 +71,8 @@ class BiliResponseParse {
                         quality_infos = mutableListOf<CM.QualityInfo>().apply {
                             for(i in 0 until (qualityInfos?.length()?:0)){
                                 val qualityInfo = qualityInfos?.optJSONObject(i)
-                                add(CM.QualityInfo(
+                                add(
+                                    CM.QualityInfo(
                                     icon = qualityInfo?.optString("icon"),
                                     text = qualityInfo?.optString("text")
                                 ))
@@ -82,20 +85,23 @@ class BiliResponseParse {
                         type = descButton?.optInt("type")
                     )
                 )
-            ))
+            )
+            )
         }
 
         private fun smallCoverItems(items: MutableList<BiliRecommend>, itemObject: JSONObject) {
             val desc_button = itemObject.optJSONObject("desc_button")
             val goto_icon = itemObject.optJSONObject("goto_icon")
             val rcmd_reason_style = itemObject.optJSONObject("rcmd_reason_style")
-            items.add(BiliRecommend(
+            items.add(
+                BiliRecommend(
                 card_type = itemObject.optString("card_type"),
                 card_goto = itemObject.optString("card_goto"),
                 cover = itemObject.optString("cover"),
                 title = itemObject.optString("title"),
                 uri = itemObject.optString("uri"),
                 creative_style = itemObject.optInt("creative_style"),
+                param = itemObject.optString("param"),
                 SmallCover(
                     talk_back = itemObject.optString("talk_back"),
                     cover_left_text_1 = itemObject.optString("cover_left_text_1"),
@@ -124,7 +130,8 @@ class BiliResponseParse {
                     rcmd_reason_style_text_color = rcmd_reason_style?.optString("text_color"),
                     rcmd_reason_style_bg_color = rcmd_reason_style?.optString("bg_color"),
                 )
-            ))
+            )
+            )
         }
 
         private fun bannerItems(items: MutableList<BiliRecommend>, itemObject: JSONObject?){
@@ -147,7 +154,8 @@ class BiliResponseParse {
                 )
                 bannerItems.add(bannerItem)
             }
-            items.add(BiliRecommend(
+            items.add(
+                BiliRecommend(
                 card_type = itemObject?.optString("card_type"),
                 banner_item = bannerItems)
             )

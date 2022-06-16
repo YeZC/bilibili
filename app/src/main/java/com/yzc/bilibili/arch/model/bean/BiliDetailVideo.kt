@@ -1,4 +1,4 @@
-package com.yzc.bilibili.backup.bean
+package com.yzc.bilibili.arch.model.bean
 
 import com.yzc.base.api.BiliBaseResponse
 

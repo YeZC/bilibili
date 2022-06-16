@@ -1,4 +1,4 @@
-package com.yzc.bilibili.backup.bean
+package com.yzc.bilibili.arch.model.bean
 
 import com.yzc.base.api.BiliBaseResponse
 
@@ -9,7 +9,8 @@ class BiliRecommend: BiliBaseResponse {
                 cover: String? = null,
                 title: String? = null,
                 uri: String? = null,
-                creative_style: Int = -1,
+                creative_style: Int = -1,// item的类型
+                param: String = "",
                 small_cover: SmallCover? = null,
                 banner_item: MutableList<BannerItem>? = null,
                 cm: CM? = null) {
@@ -30,6 +31,7 @@ class BiliRecommend: BiliBaseResponse {
     var title: String? = null
     var uri: String? = null
     var creative_style: Int = -1
+    var param: String = ""
 
     // banner_v8={banner}
     var banner_item: MutableList<BannerItem>? = null

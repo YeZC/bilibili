@@ -1,4 +1,4 @@
-package com.yzc.bilibili.fragment
+package com.yzc.bilibili.arch.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

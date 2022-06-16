@@ -1,23 +1,17 @@
 package com.yzc.bilibili.adapter.banner
 
 import android.graphics.Typeface
-import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.youth.banner.adapter.BannerAdapter
-import com.youth.banner.holder.BannerImageHolder
 import com.yzc.bilibili.R
-import com.yzc.bilibili.backup.bean.BannerItem
-import com.yzc.bilibili.util.sp2px
-import com.yzc.bilibili.util.toPx
+import com.yzc.bilibili.arch.model.bean.BannerItem
 
 class RecommendBannerAdapter(mData: MutableList<BannerItem>?): BannerAdapter<BannerItem, RecommendBannerHolder?>(mData) {
 

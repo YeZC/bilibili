@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.yzc.bilibili.fragment.BiliRecommendFragment
-import com.yzc.bilibili.fragment.DemoFragment
+import com.yzc.bilibili.arch.view.fragment.BiliRecommendFragment
+import com.yzc.bilibili.arch.view.fragment.DemoFragment
 
 class DemoPagerAdapter(fm: AppCompatActivity, var data: List<String>) : FragmentStateAdapter(fm) {
 

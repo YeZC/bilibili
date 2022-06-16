@@ -1,4 +1,4 @@
-package com.yzc.bilibili.fragment
+package com.yzc.bilibili.arch.view.fragment
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.youth.banner.itemdecoration.MarginDecoration
-import com.yzc.base.util.logd
 import com.yzc.bilibili.R
 import com.yzc.bilibili.adapter.BiliRecommendAdapter
 import com.yzc.bilibili.arch.viewmodel.RecommendViewModel
@@ -56,8 +55,7 @@ class BiliRecommendFragment: Fragment() {
 
         recyclerView?.apply {
             adapter = recommendAdapter
-            var topPadding = context.resources.getDimension(R.dimen.ad_feed_card_content_margin_horizontal)
-                    .toInt()
+            var topPadding = context.resources.getDimension(R.dimen.ad_feed_card_content_margin_horizontal).toInt()
             addItemDecoration(object : MarginDecoration(topPadding) {
                 override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
                     super.getItemOffsets(outRect, view, parent, state)

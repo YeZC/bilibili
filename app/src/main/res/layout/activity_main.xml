@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".arch.view.MainActivity">
 
     <include android:id="@+id/bili_app_toolbar" layout="@layout/bili_app_layout_home_top_tool"/>
 

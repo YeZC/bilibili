@@ -1,9 +1,8 @@
-package com.yzc.bilibili.backup
+package com.yzc.bilibili.arch.model
 
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 // https://app.bilibili.com/

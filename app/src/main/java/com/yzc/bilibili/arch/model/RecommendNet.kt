@@ -1,10 +1,9 @@
-package com.yzc.bilibili.backup
+package com.yzc.bilibili.arch.model
 
 import com.yzc.base.network.BiliRetrofit
-import com.yzc.base.util.loge
-import com.yzc.bilibili.backup.bean.BiliDetailVideo
-import com.yzc.bilibili.backup.bean.BiliRecommend
-import com.yzc.bilibili.backup.parser.BiliResponseParse
+import com.yzc.bilibili.arch.model.bean.BiliDetailVideo
+import com.yzc.bilibili.arch.model.bean.BiliRecommend
+import com.yzc.bilibili.arch.model.parser.BiliResponseParse
 import org.json.JSONObject
 
 
@@ -30,7 +29,6 @@ class RecommendNet {
         val biliRecommend = BiliResponseParse.toBiliDetailVideo(responseJson)
 
 //        val res = biliRecommend.items ?: mutableListOf()
-
         return mutableListOf()
     }
 
