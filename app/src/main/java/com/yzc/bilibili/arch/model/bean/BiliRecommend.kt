@@ -19,6 +19,8 @@ class BiliRecommend: BiliBaseResponse {
         this.cover = cover
         this.title = title
         this.uri = uri
+        this.creative_style = creative_style
+        this.param = param
         this.small_cover = small_cover
         this.banner_item = banner_item
         this.cm = cm

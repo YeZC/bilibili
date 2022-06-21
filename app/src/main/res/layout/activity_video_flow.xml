@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".arch.view.VideoFlowActivity">
 
+    <com.yzc.video.widget.media.IjkVideoView
+        android:id="@+id/ijk_video_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+<!--    <VideoView-->
+<!--        android:id="@+id/video_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

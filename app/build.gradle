@@ -15,6 +15,9 @@ android {
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
     }
 
     buildTypes {
@@ -36,6 +39,7 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.so', '*.aar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -43,6 +47,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation project(path: ':mall')
     implementation project(path: ':base')
+    implementation project(path: ':video')
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.json:json:20190722'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
