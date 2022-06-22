@@ -9,7 +9,13 @@ import com.yzc.base.util.logd
 import com.yzc.bilibili.R
 import com.yzc.bilibili.arch.viewmodel.VideoFlowViewModel
 import com.yzc.video.widget.media.IjkVideoView
+import okio.BufferedSink
+import okio.Okio
+import okio.Source
 import tv.danmaku.ijk.media.player.IMediaPlayer
+import java.io.File
+import java.lang.Exception
+
 
 class VideoFlowActivity : AppCompatActivity() {
 
@@ -31,15 +37,32 @@ class VideoFlowActivity : AppCompatActivity() {
     }
 
     private fun videoView(videoView: VideoView) {
-        val uri = Uri.parse("https://www.bilibili.com/video/BV1R7411A7iK?t=2.9")
-        videoView.setVideoURI(uri)
+        val uri = "android.resource://" + packageName + "/" + R.raw.testvideo
+        logd(TAG, "uri：${Uri.parse(uri)}")
+//        val uri = Uri.parse("https://www.bilibili.com/video/BV1R7411A7iK?t=2.9")
+        videoView.setVideoURI(Uri.parse(uri))
         videoView.start()
     }
 
     private fun ijkVideoView(ijkVideoView: IjkVideoView) {
         ijkVideoView.apply {
-            ijkVideoView.setVideoPath("http://upos-sz-mirrorcoso1.bilivideo.com/upgcxcode/20/08/747340820/747340820-1-31101.m4s?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfqXBvEuENvNC8aNEVEtEvE9IMvXBvE2ENvNCImNEVEIj0Y2J_aug859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&uipk=5&nbs=1&deadline=1655805900&gen=playurlv2&os=coso1bv&oi=3070630519&trid=1b2f5a2770db40d7bfa08308d55c2432O&mid=0&platform=iphone&upsig=887f56c63a375c507dac0b8d84bedafb&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform&bvc=vod&nettype=1&orderid=0,2&bw=133486&logo=80000000")// mp3
+            var videoPath = File(cacheDir, "video.m4s")
+            var source: Source? = null
+            var bufferedSink: BufferedSink? = null
+            try{
+                source = Okio.source(assets.open("test.m4s"))
+                bufferedSink = Okio.buffer(Okio.sink(videoPath))
+                bufferedSink.writeAll(source)
+                bufferedSink.flush()
+            }catch (e: Exception){
+                e.printStackTrace()
+            }finally {
+                bufferedSink?.close()
+                source?.close()
+            }
+
             ijkVideoView.apply {
+                setVideoPath(videoPath.path)
                 setOnErrorListener(object : IMediaPlayer.OnErrorListener {
                     override fun onError(p0: IMediaPlayer?, p1: Int, p2: Int): Boolean {
                         logd(TAG, "onError: p1:$p1 p2:$p2")
@@ -51,9 +74,10 @@ class VideoFlowActivity : AppCompatActivity() {
                 }
                 setOnPreparedListener {
                     logd(TAG, "setOnPreparedListener:")
-                    ijkVideoView.start()
                 }
                 setHudView(TableLayout(baseContext))
+                toggleAspectRatio()
+                start()
             }
         }
     }
