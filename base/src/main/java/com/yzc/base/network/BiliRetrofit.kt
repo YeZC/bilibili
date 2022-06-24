@@ -11,23 +11,22 @@ object BiliRetrofit {
             .build()
     }
 
-    private val biliVideoRetrofit by lazy<Retrofit>() {
-        Retrofit.Builder()
-            .baseUrl(Host.VIDEO.host)
-            .build()
-    }
+//    private val biliVideoRetrofit by lazy<Retrofit>() {
+//        Retrofit.Builder()
+//            .baseUrl(Host.VIDEO.host)
+//            .build()
+//    }
 
     fun <T> getBiliService(clazz: Class<T>): T {
         return biliRetrofit.create(clazz)
     }
 
-    fun <T> getVideoService(clazz: Class<T>): T {
-        return biliVideoRetrofit.create(clazz)
-    }
+//    fun <T> getVideoService(clazz: Class<T>): T {
+//        return biliVideoRetrofit.create(clazz)
+//    }
 }
 
 enum class Host(val host: String) {
     BILIBILI("https://app.bilibili.com/"),
-    VIDEO("http://upos-sz-mirrorcoso1.bilivideo.com"),
     OTHER("other")
 }

@@ -1,6 +1,8 @@
 package com.yzc.bilibili.arch.model.bean
 
 import com.yzc.base.api.BiliBaseResponse
+import java.net.URLDecoder
+import java.net.URLEncoder
 
 class BiliRecommend: BiliBaseResponse {
 

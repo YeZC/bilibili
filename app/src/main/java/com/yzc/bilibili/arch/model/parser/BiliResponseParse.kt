@@ -1,28 +1,30 @@
 package com.yzc.bilibili.arch.model.parser
 
+import com.yzc.base.network.BaseParse
 import com.yzc.base.util.loge
 import com.yzc.bilibili.arch.model.bean.*
 import org.json.JSONObject
 
-class BiliResponseParse {
+class BiliResponseParse: BaseParse(){
     companion object {
         private val TAG = BiliResponseParse::class.java.simpleName
         fun toBiliRecommend(json: JSONObject): MutableList<BiliRecommend> {
             var items: MutableList<BiliRecommend> = mutableListOf<BiliRecommend>()
-            var itemArr = json.optJSONObject("data")?.optJSONArray("items")
+            var itemArr = json.optJSONObject(DATA)?.optJSONArray(ITEMS)
             var itemObject: JSONObject? = null
-            for(i in 0..itemArr?.length()!!){
-                itemObject = itemArr.optJSONObject(i)
+            var size = itemArr?.length()?:0
+            for(i in 0 until size){
+                itemObject = itemArr?.optJSONObject(i)
                 var cardType = itemObject?.optString("card_type")
                 when(cardType){
                     "banner_v8" -> {
                         bannerItems(items, itemObject)
                     }
                     "small_cover_v2" -> {
-                        smallCoverItems(items, itemObject)
+                        smallCoverItems(items, itemObject!!)
                     }
                     "cm_v2" -> {
-                        cmItems(items, itemObject)
+                        cmItems(items, itemObject!!)
                     }
                     else -> {
                         loge(TAG, "toBiliRecommend: [${cardType}] parse error")
@@ -138,8 +140,9 @@ class BiliResponseParse {
             val bannerItemArr = itemObject?.optJSONArray("banner_item")
 
             val bannerItems = mutableListOf<BannerItem>()
-            for(i in 0 until bannerItemArr?.length()!!){
-                val bannerJson = bannerItemArr.getJSONObject(i)
+            val size = bannerItemArr?.length()?: 0
+            for(i in 0 until size){
+                val bannerJson = bannerItemArr?.getJSONObject(i)
                 val staticBanner = bannerJson?.optJSONObject("static_banner")
                 val bannerItem = BannerItem(
                     type = bannerJson?.optString("type"),
@@ -161,15 +164,5 @@ class BiliResponseParse {
             )
         }
 
-        fun toBiliDetailVideo(json: JSONObject): MutableList<BiliDetailVideo> {
-            var items: MutableList<BiliDetailVideo> = mutableListOf<BiliDetailVideo>()
-            var itemArr = json.optJSONObject("data")?.optJSONArray("items")
-            var itemObject: JSONObject? = null
-            for(i in 0..itemArr?.length()!!){
-                itemObject = itemArr.optJSONObject(i)
-
-            }
-            return items
-        }
     }
 }

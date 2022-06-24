@@ -20,8 +20,8 @@ import com.yzc.bilibili.adapter.banner.RecommendBannerAdapter
 import com.yzc.bilibili.arch.model.bean.BannerItem
 import com.yzc.bilibili.arch.model.bean.BiliRecommend
 import com.yzc.bilibili.arch.model.bean.RecommendVH
-import com.yzc.bilibili.arch.view.VideoFlowActivity
 import com.yzc.bilibili.util.toPx
+import com.yzc.video.arch.view.VideoFlowActivity
 import java.lang.RuntimeException
 
 class BiliRecommendAdapter:

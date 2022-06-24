@@ -75,7 +75,6 @@ class BiliRecommendFragment: Fragment() {
             recommendAdapter.setDatas(it, dropDownLoading)
             if(dropDownLoading) dropDownLoading = false
         }
-
         viewModel.loadData()
     }
 

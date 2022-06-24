@@ -4,5 +4,10 @@
     package="com.yzc.video">
 
     <uses-sdk tools:overrideLibrary="com.arthenica.mobileffmpeg" />
-
+    <application>
+        <activity
+            android:name=".arch.view.VideoFlowActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="false" />
+    </application>
 </manifest>

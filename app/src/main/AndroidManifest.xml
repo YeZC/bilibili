@@ -29,10 +29,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".arch.view.VideoFlowActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="false" />
     </application>
 
 </manifest>

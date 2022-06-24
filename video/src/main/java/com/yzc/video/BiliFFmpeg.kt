@@ -7,6 +7,10 @@ import com.arthenica.mobileffmpeg.FFmpeg
 import com.yzc.base.BiliCore
 import com.yzc.base.util.logd
 import com.yzc.base.util.loge
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.io.File
 
 /**
  * https://github.com/tanersener/mobile-ffmpeg
@@ -18,25 +22,33 @@ object BiliFFmpeg {
     /**
      * ffmpeg -i (video.m4s) -i (audio.m4s) -c:v copy -strict experimental (output_name.mp4)
      */
-    fun audioAndVideoSynthesis(video: String, audio: String, outputPath: String){
-        excutor("-i $video -i $audio -c:v copy -strict experimental $outputPath.mp4")
+    fun audioAndVideoSynthesis(video: String, audio: String, outputPath: String): Boolean{
+        var excutor = excutor("-i $video -i $audio -c:v copy -strict experimental $outputPath")
+        GlobalScope.launch(Dispatchers.IO) {
+            val vDelete = File(video).delete()
+            val aDelete = File(audio).delete()
+            logd(TAG, "delete video:$vDelete audio:$aDelete")
+        }
+        return excutor
     }
 
     fun m4s2MP4(fileName: String, outputPath: String){
-        excutor("-i $fileName -c copy -strict experimental $outputPath.mp4")
+        excutor("-i $fileName -c copy -strict experimental $outputPath")
     }
 
-    private fun excutor(cmd: String) {
+    private fun excutor(cmd: String): Boolean {
         val rc: Int = FFmpeg.execute(cmd)
         when (rc) {
             RETURN_CODE_SUCCESS -> {
-                logd(TAG, "excutor successfully.")
+                logd(TAG, "ffmpeg successfully.")
+                return true
             }
-            RETURN_CODE_CANCEL -> {
-                logd(TAG, "excutor cancelled by user.")
-            }
-            else -> {
-                loge(TAG, "Command execution failed with rc=${rc} and the output below.")
+//            RETURN_CODE_CANCEL -> {
+//                logd(TAG, "excutor cancelled by user.")
+//            }
+            else -> {// and RETURN_CODE_CANCEL
+                loge(TAG, "ffmpeg Command execution failed with rc=${rc} and the output below.")
+                return false
             }
         }
     }
