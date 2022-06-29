@@ -3,7 +3,9 @@ package com.yzc.video.backup
 import android.content.Context
 import com.yzc.base.BiliCore
 import com.yzc.base.ktexpand.getUriValue
+import com.yzc.video.arch.viewmodel.VideoFlowViewModel
 import org.json.JSONObject
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -15,6 +17,13 @@ internal class VideoFlowNetTest {
 
     @Mock
     private lateinit var mockContext: Context
+    private val AID = "552613151"
+
+
+    @Before
+    fun init(){
+        BiliCore.init(context = mockContext)
+    }
 
     @Test
     fun decode(){
@@ -31,15 +40,35 @@ internal class VideoFlowNetTest {
     }
 
     @Test
-    fun detailVideo() {
-        val aid = "554902946"
-        BiliCore.init(context = mockContext)
-
+    fun getFileSize(){
         val net = VideoFlowNet()
-        var detailVideo = net.detailVideo(aid)
-        val videoUrl = detailVideo[0].videos?.get(0)?.base_url
+        val detailVideo = net.detailVideo(AID)
+        val urlStr = detailVideo[0].videos?.get(0)?.base_url!!
+        val filePair = net.getFilePair(urlStr)
+        println("fileSize: ${filePair.first} fileType: ${filePair.second}")
+    }
+
+    @Test
+    fun detailVideo() {
+        val net = VideoFlowNet()
+        var detailVideo = net.detailVideo(AID)
+//        val videoUrl = detailVideo[0].videos?.get(0)?.base_url
+        val videoUrl = "http://223.242.79.143:4480/upgcxcode/56/29/756022956/756022956-1-31101.m4s?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfqXBvEuENvNC8aNEVEtEvE9IMvXBvE2ENvNCImNEVEIj0Y2J_aug859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&uipk=5&nbs=1&deadline=1656490322&gen=playurlv2&os=mcdn&oi=3070630519&trid=0001d16481b33440404e9d26b5bb98d9fec1O&mid=0&platform=iphone&upsig=a76dd2b18ecb487c267ba814a930d266&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform&mcdnid=9001625&bvc=vod&nettype=1&orderid=0,2&bw=66971&logo=A0000100"
         assert(videoUrl?.isNotEmpty() == true)
-        val path = net.download("video", videoUrl!!)
+        val filePair = net.getFilePair(videoUrl!!)
+        val path = net.download("video2.ts", videoUrl!!, 500_001, 1000_000)
         println("download video $path")
+        // http://223.242.79.143:4480/upgcxcode/56/29/756022956/756022956-1-31101.m4s?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfqXBvEuENvNC8aNEVEtEvE9IMvXBvE2ENvNCImNEVEIj0Y2J_aug859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&uipk=5&nbs=1&deadline=1656490322&gen=playurlv2&os=mcdn&oi=3070630519&trid=0001d16481b33440404e9d26b5bb98d9fec1O&mid=0&platform=iphone&upsig=a76dd2b18ecb487c267ba814a930d266&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform&mcdnid=9001625&bvc=vod&nettype=1&orderid=0,2&bw=66971&logo=A0000100
+    }
+
+    @Test
+    fun videoFlowTest(){
+        val net = VideoFlowNet()
+        val urlStr = "http://103.151.151.52/upgcxcode/86/70/742887086/742887086-1-30064.m4s?e=ig8euxZM2rNcNbdlhoNvNC8BqJIzNbfqXBvEuENvNC8aNEVEtEvE9IMvXBvE2ENvNCImNEVEIj0Y2J_aug859r1qXg8gNEVE5XREto8z5JZC2X2gkX5L5F1eTX1jkXlsTXHeux_f2o859IB_&uipk=5&nbs=1&deadline=1656390179&gen=playurlv2&os=bcache&oi=2633568537&trid=0000869de2f8bd664d99bbd39a9dfb6aa2d9O&mid=0&platform=iphone&upsig=e260d68650385bf4c5dfe65fb7db83d2&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform&cdnid=9599&bvc=vod&nettype=1&orderid=0,2&bw=71086&logo=80000000"
+
+        VideoFlowViewModel().loadData("554902241")
+//        val path = net.download("video${System.currentTimeMillis()}", urlStr)
+//        println("download video $path")
+        Thread.sleep(10_000)
     }
 }

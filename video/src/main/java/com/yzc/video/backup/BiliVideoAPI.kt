@@ -2,6 +2,7 @@ package com.yzc.video.backup
 
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 // https://app.bilibili.com/
@@ -13,5 +14,16 @@ interface BiliVideoAPI {
     fun detailVideo(@Query("aid") aid: String): Call<ResponseBody>
 
     @GET("{path}")
-    fun fetchRes(@Path("path") path: String, @QueryMap map: Map<String, String>): Call<ResponseBody>
+    fun fetchRes(@Path("path") path: String,
+                 @QueryMap map: Map<String, String>): Call<ResponseBody>
+
+    @GET("{path}")
+    fun getVideoFlow(@Path("path") path: String,
+                     @Header("RANGE") range: String,
+                     @QueryMap map: Map<String, String>): Call<ResponseBody>
+
+    @HEAD("{path}")
+    fun getFileSize(@Path("path") path: String,
+                    @QueryMap map: Map<String, String>): Call<Void>
+
 }

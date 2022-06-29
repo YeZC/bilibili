@@ -6,16 +6,12 @@ import android.widget.TableLayout
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.yzc.base.util.logd
 import com.yzc.video.R
 import com.yzc.video.arch.viewmodel.VideoFlowViewModel
 import com.yzc.video.widget.media.IjkVideoView
-import okio.BufferedSink
-import okio.Okio
-import okio.Source
 import tv.danmaku.ijk.media.player.IMediaPlayer
-import java.io.File
-import java.lang.Exception
 
 
 class VideoFlowActivity : AppCompatActivity() {
@@ -25,7 +21,7 @@ class VideoFlowActivity : AppCompatActivity() {
     }
 
     private val TAG = VideoFlowActivity::class.java.simpleName
-    private val viewModel = VideoFlowViewModel()
+    private lateinit var viewModel: VideoFlowViewModel
     lateinit var ijkVideoView: IjkVideoView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,26 +31,27 @@ class VideoFlowActivity : AppCompatActivity() {
         logd(TAG, "onCreate $aid")
 
         initView()
-//        videoView(findViewById<VideoView>(R.id.video_view))
+        viewModel = ViewModelProvider(this).get(VideoFlowViewModel::class.java)
         viewModel.biliVideos.observe(this, Observer {
+            logd(TAG, "videoFile $it")
             play(it)
         })
         viewModel.loadData(aid)
     }
 
-    private fun videoView(videoView: VideoView) {
-        val uri = Uri.parse("https://www.bilibili.com/video/BV1R7411A7iK?t=2.9")
-        videoView.setVideoURI(uri)
-        videoView.start()
-    }
-
     private fun play(path: String) {
-        ijkVideoView.apply {
-            setVideoPath(path)
-            start()
+        if(pathStr.isEmpty()){
+            ijkVideoView.apply {
+                setVideoPath(path)
+                start()
+            }
         }
+        pathStr = path
+        cache = true
     }
 
+    private var cache = false
+    private var pathStr = ""
     private fun initView() {
         ijkVideoView = findViewById(R.id.ijk_video_view)
         ijkVideoView.apply {
@@ -66,6 +63,16 @@ class VideoFlowActivity : AppCompatActivity() {
             })
             setOnCompletionListener {
                 logd(TAG, "setOnCompletionListener:")
+                if(cache){
+                    ijkVideoView.apply {
+                        logd(TAG, "replay: $pathStr")
+                        val mces = currentPosition
+                        setVideoPath(pathStr)
+                        seekTo(mces)
+                        start()
+                    }
+                    cache = false
+                }
             }
             setOnPreparedListener {
                 logd(TAG, "setOnPreparedListener:")
@@ -74,4 +81,25 @@ class VideoFlowActivity : AppCompatActivity() {
 //            toggleAspectRatio()
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        ijkVideoView.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        ijkVideoView.pause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        ijkVideoView.stopPlayback()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ijkVideoView.release(true)
+    }
+
 }
