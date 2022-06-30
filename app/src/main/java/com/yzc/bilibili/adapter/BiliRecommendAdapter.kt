@@ -220,18 +220,12 @@ class CombinationVH(itemView: View): RecommendViewHolder(itemView) {
                 }
             }
         }?: throw RuntimeException("CombinationVH innerBind holder is null")
-        holder?.apply {
-            itemView.setOnClickListener {
-                var context = itemView.context
-                val intent = Intent(context, VideoFlowActivity::class.java).apply {
-                    putExtra(VideoFlowActivity.INTENT_AID, recommend.param)
-                }
-                context.startActivity(intent)
-            }
+        holder.itemView.setOnClickListener {
+            VideoFlowActivity.start(itemView.context, recommend.param)
         }
     }
 
-    class CombinationHolder(itemView: View) {
+    class CombinationHolder(val itemView: View) {
         // universal
         val cover: AppCompatImageView = itemView.findViewById(R.id.iv_cover)
         val coverLeftText: AppCompatTextView = itemView.findViewById(R.id.cover_left_text)

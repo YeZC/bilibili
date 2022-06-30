@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.youth.banner.itemdecoration.MarginDecoration
@@ -25,7 +26,7 @@ class BiliRecommendFragment: Fragment() {
     private var swipeRefreshView: SwipeRefreshLayout? = null
     private var recyclerView: RecyclerView? = null
 
-    private val viewModel = RecommendViewModel()
+    private lateinit var viewModel: RecommendViewModel
     private val recommendAdapter = BiliRecommendAdapter()
     private var dropDownLoading = true
 
@@ -71,6 +72,7 @@ class BiliRecommendFragment: Fragment() {
                 }
             }
         })
+        viewModel = ViewModelProvider(this).get(RecommendViewModel::class.java)
         viewModel.biliRecommend.observe(viewLifecycleOwner){
             recommendAdapter.setDatas(it, dropDownLoading)
             if(dropDownLoading) dropDownLoading = false

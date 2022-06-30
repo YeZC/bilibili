@@ -1,5 +1,7 @@
 package com.yzc.video.arch.view
 
+import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.TableLayout
@@ -15,9 +17,15 @@ import tv.danmaku.ijk.media.player.IMediaPlayer
 
 
 class VideoFlowActivity : AppCompatActivity() {
-
     companion object{
         const val INTENT_AID = "aid"
+
+        fun start(context: Context, param: String) {
+            val intent = Intent(context, VideoFlowActivity::class.java).apply {
+                putExtra(INTENT_AID, param)
+            }
+            context.startActivity(intent)
+        }
     }
 
     private val TAG = VideoFlowActivity::class.java.simpleName
