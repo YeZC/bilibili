@@ -53,7 +53,7 @@ class VideoFlowNet: BiliNet {
         }
     }
 
-    fun download(fileName: String, urlStr: String, range: Int = 0, step: Int = 500_000): String {
+    fun download(fileName: String, urlStr: String, range: Int, step: Int): String {
         var filePath = ""
         var response: Response<ResponseBody>? = null
         try{
@@ -65,6 +65,7 @@ class VideoFlowNet: BiliNet {
             loge(TAG, "${e.message}")
         }
         if(response?.code().toString().startsWith("2")){
+//            println("download success bytes=${range}-${step}")
             val byteStream = response?.body()?.byteStream()
             byteStream?.let { inputStream ->
                 val cacheFile = File(BiliCore.App().cacheDir, fileName)
