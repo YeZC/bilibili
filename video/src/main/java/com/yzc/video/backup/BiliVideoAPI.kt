@@ -17,13 +17,14 @@ interface BiliVideoAPI {
     fun fetchRes(@Path("path") path: String,
                  @QueryMap map: Map<String, String>): Call<ResponseBody>
 
+    @HEAD("{path}")
+    fun getFileSize(@Path("path") path: String,
+                    @QueryMap map: Map<String, String>): Call<Void>
+
     @GET("{path}")
     fun getVideoFlow(@Path("path") path: String,
                      @Header("RANGE") range: String,
                      @QueryMap map: Map<String, String>): Call<ResponseBody>
 
-    @HEAD("{path}")
-    fun getFileSize(@Path("path") path: String,
-                    @QueryMap map: Map<String, String>): Call<Void>
 
 }

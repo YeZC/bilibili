@@ -40,35 +40,31 @@ class VideoFlowNet: BiliNet {
         return videos
     }
 
-    fun getFilePair(urlStr: String): Pair<Int, String> {
-        val url = URL(urlStr)
-        val baseUrl = url.getBaseUrl()
-        var retrofit = Retrofit.Builder().baseUrl(baseUrl).build()
-        var service = retrofit.create(BiliVideoAPI::class.java)
-        val response = service.getFileSize(url.path, url.query.getQueryMap()).execute()
-        val first = Integer.parseInt(response.headers()["Content-Length"]?: "0")
-//        val second = (response!!.headers()["Content-Type"]?.toString()?: "m4s").let {
-//            it.substring(it.indexOf('/') + 1, it.length)
-//        }
-//        logd(TAG, "getFilePair: (${first},${second})")
-        return Pair(first, "ts")
-//        return Pair(first, second)
+    fun getFilePair(urlStr: String, filetype: String = "ts"): Pair<Int, String> {
+        URL(urlStr).let {
+            val dynamicService = BiliRetrofit.getDynamicService(it.getBaseUrl(), BiliVideoAPI::class.java)
+            val response = dynamicService.getFileSize(it.path, it.query.getQueryMap()).execute()
+            val first = Integer.parseInt(response.headers()["Content-Length"]?: "0")
+    //        val second = (response!!.headers()["Content-Type"]?.toString()?: "m4s").let {
+    //            it.substring(it.indexOf('/') + 1, it.length)
+    //        }
+    //        logd(TAG, "getFilePair: (${first},${second})")
+            return Pair(first, filetype)// default video ts
+        }
     }
 
     fun download(fileName: String, urlStr: String, range: Int = 0, step: Int = 500_000): String {
         var filePath = ""
-        val url = URL(urlStr)
-        val baseUrl = url.getBaseUrl()
         var response: Response<ResponseBody>? = null
         try{
-            var retrofit = Retrofit.Builder().baseUrl(baseUrl).build()
-            var service = retrofit.create(BiliVideoAPI::class.java)
-            response = service.getVideoFlow(url.path, "bytes=${range}-${step}", url.query.getQueryMap()).execute()
+            URL(urlStr).let {
+                val service = BiliRetrofit.getDynamicService(it.getBaseUrl(), BiliVideoAPI::class.java)
+                response = service.getVideoFlow(it.path, "bytes=${range}-${step}", it.query.getQueryMap()).execute()
+            }
         }catch (e: Exception){
             loge(TAG, "${e.message}")
         }
         if(response?.code().toString().startsWith("2")){
-//            println("download success bytes=${range}-${step}")
             val byteStream = response?.body()?.byteStream()
             byteStream?.let { inputStream ->
                 val cacheFile = File(BiliCore.App().cacheDir, fileName)

@@ -46,29 +46,15 @@ class VideoFlowViewModel : ViewModel() {
         val aidFile = File(BiliCore.App().cacheDir, "${aid}.mp4").path
 
         val videoPair = net.getFilePair(videoUrl)// (filesize,filetype)
-        var audioPair = net.getFilePair(audioUrl)
-        audioPair = Pair(audioPair.first, "mp4")
+        var audioPair = net.getFilePair(audioUrl, "mp4")
 
-        val videoFileName = "video${System.currentTimeMillis()}.${videoPair.second}"
-        val audioFileName = "audio${System.currentTimeMillis()}.${audioPair.second}"
-        val path1 = net.download(videoFileName, videoUrl)
-        val path2 = net.download(audioFileName, audioUrl)
-        cachePaths.add(path1)
-        cachePaths.add(path2)
-        if(path1.isNotEmpty() or path2!!.isNotEmpty()){
-            var synthesis = BiliFFmpeg.audioAndVideoSynthesis(path1, path2, aidFile)
-            if(synthesis) logd(TAG, "audio and video synthesis success!")
-            mCurrent.postValue(aidFile)
-            cachePaths.add(aidFile)
-            val substring = aidFile.substring(aidFile.lastIndexOf("."), aidFile.length)
-            val outputFile = aidFile.replace(substring, "0$substring")
-            downloadRange(Pair(videoFileName, videoUrl), Pair(audioFileName, audioUrl), path1, path2, outputFile)
-        }
+        val videoFileName = "video_${System.currentTimeMillis()}.${videoPair.second}"
+        val audioFileName = "audio_${System.currentTimeMillis()}.${audioPair.second}"
+        downloadRange(Pair(videoFileName, videoUrl), Pair(audioFileName, audioUrl), aidFile)
     }
 
     private fun downloadRange(videoPair: Pair<String, String>, audioPair: Pair<String, String>,
-                              path1: String, path2: String,
-                              aidFile: String, range: Int = 500_001, step: Int = 1000_000) {
+                              aidFile: String, range: Int = 0, step: Int = 500_000) {
         GlobalScope.launch(Dispatchers.Default) {
             val videoDst = net.download(videoPair.first, videoPair.second, range, step)
             val radioDst = net.download(audioPair.first, audioPair.second, range, step)
@@ -77,12 +63,11 @@ class VideoFlowViewModel : ViewModel() {
             if(videoDst.isNotEmpty() or radioDst.isNotEmpty()){
                 val synthesis = BiliFFmpeg.audioAndVideoSynthesis(videoDst, radioDst, aidFile)
                 if(synthesis) logd(TAG, "audio and video synthesis success!")
-
                 cachePaths.add(aidFile)
                 mCurrent.postValue(aidFile)
                 val substring = aidFile.substring(aidFile.lastIndexOf("."), aidFile.length)
                 val outputFile = aidFile.replace(substring, "0$substring")
-                downloadRange(videoPair, audioPair, path1, path2, outputFile, step + 1, step * 2)
+                downloadRange(videoPair, audioPair, outputFile, step + 1, step * 2)
             }else logd(TAG, "downloadRange stop")
         }
     }
