@@ -1,4 +1,4 @@
-package com.yzc.video.backup
+package com.yzc.video.arch.model.backup
 
 import android.content.Context
 import com.yzc.base.BiliCore

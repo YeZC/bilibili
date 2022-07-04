@@ -1,15 +1,14 @@
 package com.yzc.video.arch.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.yzc.base.BiliCore
 import com.yzc.base.util.logd
 import com.yzc.base.util.loge
 import com.yzc.video.BiliFFmpeg
-import com.yzc.video.backup.VideoFlowNet
-import com.yzc.video.backup.bean.BiliVideoFlow
+import com.yzc.video.Constants
+import com.yzc.video.arch.model.backup.VideoFlowNet
+import com.yzc.video.arch.model.backup.bean.BiliVideoFlow
 import com.yzc.video.bean.VideoFetch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -38,7 +37,7 @@ class VideoFlowViewModel : ViewModel() {
 //                logd(TAG, "videoUrl: $videoUrl")
 //                logd(TAG, "audioUrl: $audioUrl")
                 if(videoUrl.isNotEmpty() || audioUrl.isNotEmpty()){
-                    val aidFile = File(BiliCore.App().cacheDir, "${aid}.mp4").path
+                    val aidFile = File(Constants.videoCachePath(), "${aid}.mp4").path
 
                     val videoPair = net.getFilePair(videoUrl)// (filesize,filetype)
                     var audioPair = net.getFilePair(audioUrl, "mp4")

@@ -6,7 +6,6 @@ fun String.getUriValue(key: String): String{
     if(this.isEmpty()) return ""
     var head = this.indexOf("?")
     if(head == -1) head = 0
-//    val host = this.substring(0, head)
     var start = this.indexOf("$key=")
     if(start == -1) return ""
 

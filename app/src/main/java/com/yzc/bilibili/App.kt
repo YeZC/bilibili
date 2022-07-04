@@ -3,6 +3,7 @@ package com.yzc.bilibili
 import android.app.Application
 import android.content.Context
 import com.yzc.base.BiliCore
+import com.yzc.bilibili.util.CacheManager
 import java.lang.ref.WeakReference
 
 class App: Application() {

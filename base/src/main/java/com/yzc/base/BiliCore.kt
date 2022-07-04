@@ -13,4 +13,5 @@ object BiliCore {
     fun App(): Context {
         return app.get()!!
     }
+
 }

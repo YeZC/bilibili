@@ -1,6 +1,5 @@
-package com.yzc.video.backup
+package com.yzc.video.arch.model.backup
 
-import com.yzc.base.BiliCore
 import com.yzc.base.ktexpand.getBaseUrl
 import com.yzc.base.ktexpand.getQueryMap
 import com.yzc.base.network.BiliNet
@@ -8,11 +7,8 @@ import com.yzc.base.network.BiliRetrofit
 import com.yzc.base.util.logd
 import com.yzc.base.util.loge
 import com.yzc.base.util.logw
-import com.yzc.video.BiliFFmpeg
-import com.yzc.video.backup.bean.BiliVideoFlow
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.yzc.video.Constants
+import com.yzc.video.arch.model.backup.bean.BiliVideoFlow
 import okhttp3.ResponseBody
 import okio.BufferedSink
 import okio.Okio
@@ -20,9 +16,7 @@ import okio.Sink
 import okio.Source
 import org.json.JSONObject
 import retrofit2.Response
-import retrofit2.Retrofit
 import java.io.File
-import java.lang.Exception
 import java.net.URL
 
 class VideoFlowNet: BiliNet {
@@ -68,7 +62,7 @@ class VideoFlowNet: BiliNet {
 //            println("download success bytes=${range}-${step}")
             val byteStream = response?.body()?.byteStream()
             byteStream?.let { inputStream ->
-                val cacheFile = File(BiliCore.App().cacheDir, fileName)
+                val cacheFile = File(Constants.videoCachePath(), fileName)
                 filePath = cacheFile.path
 
                 var source: Source? = null

@@ -1,4 +1,4 @@
-package com.yzc.video.backup.bean
+package com.yzc.video.arch.model.backup.bean
 
 import com.yzc.base.api.BiliBaseResponse
 

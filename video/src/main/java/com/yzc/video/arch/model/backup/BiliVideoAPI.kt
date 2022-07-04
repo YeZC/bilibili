@@ -1,8 +1,7 @@
-package com.yzc.video.backup
+package com.yzc.video.arch.model.backup
 
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
 // https://app.bilibili.com/

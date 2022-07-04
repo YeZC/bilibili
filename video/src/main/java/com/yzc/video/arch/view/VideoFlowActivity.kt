@@ -2,9 +2,11 @@ package com.yzc.video.arch.view
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.widget.TableLayout
+import android.widget.Toast
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -60,6 +62,7 @@ class VideoFlowActivity : AppCompatActivity() {
 
     private var cache = false
     private var pathStr = ""
+    private var curDuration = 0
     private fun initView() {
         ijkVideoView = findViewById(R.id.ijk_video_view)
         ijkVideoView.apply {
@@ -74,19 +77,21 @@ class VideoFlowActivity : AppCompatActivity() {
                 if(cache){
                     ijkVideoView.apply {
                         logd(TAG, "replay: $pathStr")
-                        val mces = currentPosition
+                        logd(TAG, "replay: currentPosition:$currentPosition duration:$duration")
+                        curDuration = duration
                         setVideoPath(pathStr)
-                        seekTo(mces)
                         start()
                     }
                     cache = false
+                }else{
+                    Toast.makeText(this@VideoFlowActivity, "播放完！！！", Toast.LENGTH_SHORT).show()
                 }
             }
             setOnPreparedListener {
-                logd(TAG, "setOnPreparedListener:")
+                seekTo(curDuration)
+                logd(TAG, "setOnPreparedListener: currentPosition:$curDuration time:${duration}")
             }
             setHudView(TableLayout(baseContext))
-//            toggleAspectRatio()
         }
     }
 

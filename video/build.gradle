@@ -38,6 +38,7 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+    buildToolsVersion BUILD_TOOLS_VERSION
 }
 
 dependencies {

@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.yzc.bilibili.R
+import com.yzc.bilibili.util.CacheManager
 import com.yzc.bilibili.util.toPx
 import com.yzc.bilibili.view.DrawableSelector
 import com.yzc.bilibili.viewpager.DemoPagerAdapter
@@ -47,6 +48,8 @@ class MainActivity : AppCompatActivity() {
 
         })
         viewPager.setCurrentItem(1, false)
+
+        CacheManager.clearVideo()
     }
 
     @SuppressLint("ClickableViewAccessibility")

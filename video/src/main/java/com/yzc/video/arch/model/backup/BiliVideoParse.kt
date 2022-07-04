@@ -1,9 +1,9 @@
-package com.yzc.video.backup
+package com.yzc.video.arch.model.backup
 
 import com.yzc.base.ktexpand.getUriValue
 import com.yzc.base.network.BaseParse
-import com.yzc.video.backup.bean.BiliVideoDetail
-import com.yzc.video.backup.bean.BiliVideoFlow
+import com.yzc.video.arch.model.backup.bean.BiliVideoDetail
+import com.yzc.video.arch.model.backup.bean.BiliVideoFlow
 import org.json.JSONObject
 import java.net.URLDecoder
 
