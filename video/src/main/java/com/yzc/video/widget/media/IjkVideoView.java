@@ -17,6 +17,8 @@
 
 package com.yzc.video.widget.media;
 
+import static com.yzc.base.util.LoggerKt.logd;
+
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -36,6 +38,7 @@ import android.widget.FrameLayout;
 import android.widget.MediaController;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -134,6 +137,19 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
 
     private TextView subtitleDisplay;
 
+    /**
+     * ========= yzc start =========
+     */
+    private Boolean cache = false;
+    private String pathStr = "";
+
+    private int curDuration = 0;
+    // 分片播放时，会回到之前的2.5s
+    private int PLAY_NEXT_OFFSET = 2_500;
+    /**
+     * ========= yzc end =========
+     */
+
     public IjkVideoView(Context context) {
         super(context);
         initVideoView(context);
@@ -186,7 +202,73 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
                 LayoutParams.WRAP_CONTENT,
                 Gravity.BOTTOM);
         addView(subtitleDisplay, layoutParams_txt);
+
+        /**
+         * ========= yzc start =========
+         */
+        setOnErrorListener(new IMediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(IMediaPlayer iMediaPlayer, int i, int i1) {
+                logd(TAG, "onError: i:i i1:i1");
+                return false;
+            }
+        });
+        setOnCompletionListener(new IMediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(IMediaPlayer iMediaPlayer) {
+                logd(TAG, "setOnCompletionListener:");
+                if(cache){
+                    logd(TAG, "replay: $pathStr");
+                    logd(TAG, "replay: currentPosition:$currentPosition duration:$duration");
+                    curDuration = getDuration();
+                    setVideoPath(pathStr);
+                    start();
+                    cache = false;
+                }else{
+                    Toast.makeText(context, "播放完！！！", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(IMediaPlayer iMediaPlayer) {
+                if(curDuration < getDuration()) {
+                    if(curDuration > 0) curDuration += PLAY_NEXT_OFFSET;
+                    seekTo(curDuration);
+                }
+                logd(TAG, "setOnPreparedListener: currentPosition:$curDuration time:${duration}");
+            }
+        });
+        setHudView(new TableLayout(context));
     }
+
+    /**
+     * ========= yzc start =========
+     */
+    public void playMyBili(String path) {
+        if(pathStr.isEmpty()){
+            setVideoPath(path);
+            start();
+        }
+        pathStr = path;
+        cache = true;
+    }
+
+    public int getCurDuration(Boolean onSaveInstanceState) {
+        if(onSaveInstanceState) {
+            curDuration += PLAY_NEXT_OFFSET;
+            return curDuration;
+        }
+        return curDuration;
+    }
+
+    public void setCurDuration(int curDuration) {
+        this.curDuration = curDuration;
+    }
+
+    /**
+     * ========= yzc end =========
+     */
 
     public void setRenderView(IRenderView renderView) {
         if (mRenderView != null) {
@@ -821,6 +903,10 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
             }
         }
         mTargetState = STATE_PAUSED;
+        /**
+         * ========= yzc start =========
+         */
+        curDuration = getCurrentPosition();
     }
 
     public void suspend() {

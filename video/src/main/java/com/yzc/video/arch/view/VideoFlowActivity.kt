@@ -35,63 +35,22 @@ class VideoFlowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video_flow)
-        curDuration = savedInstanceState?.getInt(PROGRESS)?: 0
+        val curDuration = savedInstanceState?.getInt(PROGRESS)?: 0
         val aid = intent?.getStringExtra(INTENT_AID)?: ""
         logd(TAG, "onCreate aid:$aid curDuration:$curDuration")
 
-        initView()
+        initView(curDuration)
         viewModel = ViewModelProvider(this).get(VideoFlowViewModel::class.java)
         viewModel.biliVideos.observe(this, Observer {
             logd(TAG, "videoFile $it")
-            play(it)
+            ijkVideoView.playMyBili(it)
         })
         viewModel.loadData(aid)
     }
 
-    private fun play(path: String) {
-        if(pathStr.isEmpty()){
-            ijkVideoView.apply {
-                setVideoPath(path)
-                start()
-            }
-        }
-        pathStr = path
-        cache = true
-    }
-
-    private var cache = false
-    private var pathStr = ""
-    private var curDuration = 0
-    private fun initView() {
+    private fun initView(curDuration: Int) {
         ijkVideoView = findViewById(R.id.ijk_video_view)
-        ijkVideoView.apply {
-            setOnErrorListener(object : IMediaPlayer.OnErrorListener {
-                override fun onError(p0: IMediaPlayer?, p1: Int, p2: Int): Boolean {
-                    logd(TAG, "onError: p1:$p1 p2:$p2")
-                    return true
-                }
-            })
-            setOnCompletionListener {
-                logd(TAG, "setOnCompletionListener:")
-                if(cache){
-                    ijkVideoView.apply {
-                        logd(TAG, "replay: $pathStr")
-                        logd(TAG, "replay: currentPosition:$currentPosition duration:$duration")
-                        curDuration = duration
-                        setVideoPath(pathStr)
-                        start()
-                    }
-                    cache = false
-                }else{
-                    Toast.makeText(this@VideoFlowActivity, "播放完！！！", Toast.LENGTH_SHORT).show()
-                }
-            }
-            setOnPreparedListener {
-                if(curDuration < duration) seekTo(curDuration)
-                logd(TAG, "setOnPreparedListener: currentPosition:$curDuration time:${duration}")
-            }
-            setHudView(TableLayout(baseContext))
-        }
+        ijkVideoView.setCurDuration(curDuration)
     }
 
     override fun onResume() {
@@ -102,7 +61,6 @@ class VideoFlowActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         ijkVideoView.pause()
-        curDuration = ijkVideoView.currentPosition
     }
 
     override fun onStop() {
@@ -112,8 +70,7 @@ class VideoFlowActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        curDuration += 2_500
-        outState.putInt(PROGRESS, curDuration)
+        outState.putInt(PROGRESS, ijkVideoView.getCurDuration(true))
     }
 
     override fun onDestroy() {
