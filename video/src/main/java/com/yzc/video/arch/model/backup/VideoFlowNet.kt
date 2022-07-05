@@ -74,7 +74,7 @@ class VideoFlowNet: BiliNet {
                     bufferedSink = Okio.buffer(sink!!)
                     bufferedSink.writeAll(source!!)
                     bufferedSink.flush()
-//                    logd(TAG, "download $fileName ${cacheFile.path} filesize: ${cacheFile.length()}")
+                    logd(TAG, "download $fileName ${cacheFile.path} filesize: ${cacheFile.length()}")
                 }catch (e: Exception){
                     e.printStackTrace()
                 }finally {

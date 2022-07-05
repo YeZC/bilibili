@@ -2,9 +2,11 @@ package com.yzc.video.arch.model.backup
 
 import com.yzc.base.ktexpand.getUriValue
 import com.yzc.base.network.BaseParse
+import com.yzc.base.util.loge
 import com.yzc.video.arch.model.backup.bean.BiliVideoDetail
 import com.yzc.video.arch.model.backup.bean.BiliVideoFlow
 import org.json.JSONObject
+import java.lang.Exception
 import java.net.URLDecoder
 
 class BiliVideoParse: BaseParse(){
@@ -26,7 +28,13 @@ class BiliVideoParse: BaseParse(){
                     uri = itemObject.optString(URI),
                 ).apply {
                     if(uri?.isNotEmpty()!!){
-                        val playJson = JSONObject(URLDecoder.decode(uri).getUriValue("player_preload"))
+                        var playJson: JSONObject? = null
+                        try{
+                            playJson = JSONObject(URLDecoder.decode(uri).getUriValue("player_preload"))
+                        }catch (e: Exception){
+                            loge(TAG, "uri:$uri")
+                            loge(TAG, "e:${e.message}")
+                        }
                         val dash = playJson?.optJSONObject("dash")
 
                         val videos = mutableListOf<BiliVideoDetail>()

@@ -5,6 +5,9 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.view.DragEvent
+import android.view.View
 import android.widget.TableLayout
 import android.widget.Toast
 import android.widget.VideoView
@@ -21,6 +24,7 @@ import tv.danmaku.ijk.media.player.IMediaPlayer
 class VideoFlowActivity : AppCompatActivity() {
     companion object{
         const val INTENT_AID = "aid"
+        private const val PROGRESS = "progress"
 
         fun start(context: Context, param: String) {
             val intent = Intent(context, VideoFlowActivity::class.java).apply {
@@ -37,8 +41,9 @@ class VideoFlowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video_flow)
+        curDuration = savedInstanceState?.getInt(PROGRESS)?: 0
         val aid = intent?.getStringExtra(INTENT_AID)?: ""
-        logd(TAG, "onCreate $aid")
+        logd(TAG, "onCreate aid:$aid curDuration:$curDuration")
 
         initView()
         viewModel = ViewModelProvider(this).get(VideoFlowViewModel::class.java)
@@ -88,7 +93,7 @@ class VideoFlowActivity : AppCompatActivity() {
                 }
             }
             setOnPreparedListener {
-                seekTo(curDuration)
+                if(curDuration < duration) seekTo(curDuration)
                 logd(TAG, "setOnPreparedListener: currentPosition:$curDuration time:${duration}")
             }
             setHudView(TableLayout(baseContext))
@@ -103,11 +108,18 @@ class VideoFlowActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         ijkVideoView.pause()
+        curDuration = ijkVideoView.currentPosition
     }
 
     override fun onStop() {
         super.onStop()
         ijkVideoView.stopPlayback()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        curDuration += 2_500
+        outState.putInt(PROGRESS, curDuration)
     }
 
     override fun onDestroy() {

@@ -1,5 +1,8 @@
 package com.yzc.base.ktexpand
 
+import com.yzc.base.util.TAG
+import com.yzc.base.util.loge
+import java.lang.Exception
 import java.net.URL
 
 fun String.getUriValue(key: String): String{
