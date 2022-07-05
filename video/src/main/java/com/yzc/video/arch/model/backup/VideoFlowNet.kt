@@ -63,7 +63,6 @@ class VideoFlowNet: BiliNet {
             val byteStream = response?.body()?.byteStream()
             byteStream?.let { inputStream ->
                 val cacheFile = File(Constants.videoCachePath(), fileName)
-                filePath = cacheFile.path
 
                 var source: Source? = null
                 var sink: Sink? = null
@@ -74,6 +73,7 @@ class VideoFlowNet: BiliNet {
                     bufferedSink = Okio.buffer(sink!!)
                     bufferedSink.writeAll(source!!)
                     bufferedSink.flush()
+                    filePath = cacheFile.path
                     logd(TAG, "download $fileName ${cacheFile.path} filesize: ${cacheFile.length()}")
                 }catch (e: Exception){
                     e.printStackTrace()

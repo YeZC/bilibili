@@ -2,15 +2,9 @@ package com.yzc.video.arch.view
 
 import android.content.Context
 import android.content.Intent
-import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.DragEvent
-import android.view.View
 import android.widget.TableLayout
 import android.widget.Toast
-import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider

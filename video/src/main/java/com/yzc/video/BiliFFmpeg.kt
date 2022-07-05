@@ -26,12 +26,12 @@ object BiliFFmpeg {
     fun audioAndVideoSynthesis(video: String, audio: String, outputPath: String): Boolean{
 //        var excutor = excutor("-i concat:\"${video}|${audio}\" -acodec copy -vcodec copy -f mp4 $outputPath")
         var excutor = excutor("-i $video -i $audio -c:v copy -strict experimental $outputPath")
-        GlobalScope.launch(Dispatchers.IO) {
+//        GlobalScope.launch(Dispatchers.IO) {
 //            val vDelete = File(video).delete()
 //            val aDelete = File(audio).delete()
 //            logd(TAG, "delete video:$vDelete audio:$aDelete")
 //            logd(TAG, "delete video: audio:")
-        }
+//        }
         return excutor
     }
 

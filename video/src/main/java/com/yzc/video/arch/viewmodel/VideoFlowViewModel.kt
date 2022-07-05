@@ -85,7 +85,7 @@ class VideoFlowViewModel : ViewModel() {
             mCurrent.postValue(aidFile)
             val substring = aidFile.substring(aidFile.lastIndexOf("."), aidFile.length)
             val outputFile = aidFile.replace(substring, "0$substring")
-            mCurPlayPath = outputFile
+            if(File(outputFile).exists()) mCurPlayPath = outputFile
             downloadRange(videoFetch, audioFetch, outputFile)
         }else logd(TAG, "downloadRange stop")
     }
