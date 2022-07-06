@@ -1,8 +1,10 @@
 package com.yzc.video.arch.model.backup.bean
 
 import com.yzc.base.api.BiliBaseResponse
+import com.yzc.video.bean.BiliVideoEntry
+import com.yzc.video.bean.VideoFetch
 
-class BiliVideoFlow(
+class BiliVideoFlowResponse(
     val card_goto: String? = null,
     val goto: String? = null,
     val param: String? = null,
@@ -12,6 +14,10 @@ class BiliVideoFlow(
     val uri: String? = null
 ): BiliBaseResponse() {
     // custom data
-    var videos: List<BiliVideoDetail>? = null
-    var audios: List<BiliVideoDetail>? = null
+    var videos: List<BiliVideoDetailResponse>? = null
+    var audios: List<BiliVideoDetailResponse>? = null
+
+    fun toBiliVideoEntry(): BiliVideoEntry {
+        return BiliVideoEntry(param, videos, audios)
+    }
 }

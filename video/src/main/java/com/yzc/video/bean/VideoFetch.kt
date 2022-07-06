@@ -7,6 +7,7 @@ class VideoFetch(
     val fileName: String,// 包括后缀名
     var schedule: Float = 0.05f
 ) {
+    // 断点下载
     var MIN_PLAY_SIZE = 1024 * 1
     var start: Int = 0
     var end: Int = 0

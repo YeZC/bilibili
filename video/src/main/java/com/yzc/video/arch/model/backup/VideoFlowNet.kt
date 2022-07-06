@@ -8,7 +8,7 @@ import com.yzc.base.util.logd
 import com.yzc.base.util.loge
 import com.yzc.base.util.logw
 import com.yzc.video.Constants
-import com.yzc.video.arch.model.backup.bean.BiliVideoFlow
+import com.yzc.video.arch.model.backup.bean.BiliVideoFlowResponse
 import okhttp3.ResponseBody
 import okio.BufferedSink
 import okio.Okio
@@ -24,7 +24,10 @@ class VideoFlowNet: BiliNet {
     private val TAG = VideoFlowNet::class.java.simpleName
     val service by lazy { BiliRetrofit.getBiliService(BiliVideoAPI::class.java) }
 
-    fun detailVideo(aid: String): MutableList<BiliVideoFlow> {
+    /**
+     * 拉去视频流
+     */
+    fun detailVideo(aid: String): MutableList<BiliVideoFlowResponse> {
         var response = service.detailVideo(aid).execute()
         val responseJson = JSONObject(response.body()?.string()?: "")
         val resPair = resPair(responseJson)
@@ -34,6 +37,9 @@ class VideoFlowNet: BiliNet {
         return videos
     }
 
+    /**
+     * 获取视频大小
+     */
     fun getFilePair(urlStr: String, filetype: String = "ts"): Pair<Int, String> {
         URL(urlStr).let {
             val dynamicService = BiliRetrofit.getDynamicService(it.getBaseUrl(), BiliVideoAPI::class.java)
@@ -47,6 +53,9 @@ class VideoFlowNet: BiliNet {
         }
     }
 
+    /**
+     * 下载视频
+     */
     fun download(fileName: String, urlStr: String, range: Int, step: Int): String {
         var filePath = ""
         var response: Response<ResponseBody>? = null
